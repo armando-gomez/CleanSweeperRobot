@@ -1,6 +1,8 @@
 package com.groupseven.robot;
 
 import java.awt.Point;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.groupseven.simulator.*;
 
@@ -15,12 +17,14 @@ public class Robot {
 	private SensorSimulator simulator;
 	private Point pos;
 	
+	private List<Point> chargingStations;
+	
 	public Robot(SensorSimulator _simulator) {
 		this.setCharge(startingCharge);
 		this.simulator = _simulator;
 		this.setPos(new Point());
 		//this.setStartingPos(simulator.getStartingPos());
-
+		chargingStations = new ArrayList<Point>();
 
 	}
 	
@@ -44,7 +48,7 @@ public class Robot {
 		return this.getDirtCapacity() == dirtCapacityMax;
 	}
 
-	public void emptyRobot() {
+	public void emptyDirt() {
 		this.setDirtCapacity(0);
 	}
 	
@@ -60,5 +64,33 @@ public class Robot {
 
 	}
 	
+	private void senseSurroundings() {
+		
+	}
+	
+	public void rechargePower() {
+		this.setCharge(startingCharge);
+	}
+	
+	public void addChargingStation(Point p) {
+		this.chargingStations.add(p);
+	}
+	
+	public List<Point> getChargingStations() {
+		return this.chargingStations;
+	}
+	
+	public Point getClosestChargingStation() {
+		double closestDistance = Integer.MAX_VALUE;
+		Point closestStation = this.getPos();
+		for(Point p: this.getChargingStations()) {
+			
+		}
+		return closestStation;
+	}
+	
+	public boolean canMove(Point curr, int dir) {
+		return true;
+	}
 	
 }
