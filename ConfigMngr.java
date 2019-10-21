@@ -18,12 +18,7 @@ public class ConfigMngr {
 	private Cell[] cell;
 	private Iterator<JSONObject> iterator;
 
-
-	{
-		System.out.println("In ConfigMngr!");
-	}
-
-	public ConfigMngr(String s) {
+	public ConfigMngr(String s) { 
 		this.fileName = s;
 		parser = new JSONParser();
 		layout = new Layout();
@@ -36,17 +31,13 @@ public class ConfigMngr {
 			iterator = jArray.iterator();
 			long l = layout.getNumRows() * layout.getNumCols();
 			cell = new Cell[(int) l];
-			System.out.println(layout.getNumRows() * layout.getNumCols());
+			int i = 0;
 			while (iterator.hasNext()) {
-				System.out.println(iterator.next());
 				JSONObject n = iterator.next();
-				for (int i = 0; 0 < jArray.size(); i++) {
-					cell[i] = new Cell((Boolean) n.get("foward"),(Boolean) n.get("back"),(Boolean)  n.get("right"),(Boolean)  n.get("left"), (Integer) n.get("dirt"), (String) n.get("type"));
-					System.out.println(cell[i].toString());
-				}
+				cell[i] = new Cell((Boolean) n.get("forward"),(Boolean) n.get("back"),(Boolean)  n.get("right"),(Boolean)  n.get("left"), (Long) n.get("dirt"), (String) n.get("type"));
+				i++;
 			}
-			System.out.println(layout.getNumRows() + " " + layout.getNumCols() + "\n" +
-			jArray.toString());
+			layout.populateGrid(cell);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
