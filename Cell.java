@@ -10,12 +10,12 @@ public class Cell {
 	private Boolean left;
 
 	//  amount of dirt present in cell and what type of floor in cell
-	private int dirt;
+	private long dirt;
 	private String type;
 
 	// constructor
 	public Cell( Boolean forward, Boolean back, Boolean right, Boolean left,
-			int dirt, String type) {
+			long dirt, String type) {
 		setForward(forward);
 		setBack(back);
 		setRight(right);
@@ -26,24 +26,15 @@ public class Cell {
 
 	// getters and setters, with checks
 	public void setName(int i, int j) {
-		name += Integer.toString(i);
-		name += Integer.toString(j);
+		name = "(" + Integer.toString(i);
+		name += "," + Integer.toString(j)+ ")";
 	}
 
 	public String getName() {
 		return this.name;
 	}
 	public void setForward(Boolean f) {
-		try {
-			if(true || false) 
-				forward = f;
-			else {
-				throw new InvalidEntryException("Incorrect entry");
-			}
-		} catch (InvalidEntryException i) {
-
-			i.printStackTrace();
-		}
+		this.forward = f;
 	}
 
 	public Boolean getForward() {
@@ -51,16 +42,7 @@ public class Cell {
 	}
 
 	public void setBack(Boolean b) {
-		try {
-			if(true || false) 
-				back = b;
-			else {
-				throw new InvalidEntryException("Incorrect entry");
-			}
-		} catch (InvalidEntryException i) {
-
-			i.printStackTrace();
-		}
+		this.back = b;
 	}
 
 	public Boolean getBack() {
@@ -68,16 +50,7 @@ public class Cell {
 		return this.back;
 	}
 	public void setRight(Boolean r) {
-		try {
-			if(true || false) 
-				right = r;
-			else {
-				throw new InvalidEntryException("Incorrect entry");
-			}
-		} catch (InvalidEntryException i) {
-
-			i.printStackTrace();
-		}
+				this.right = r;
 	}
 
 	public Boolean geRight() {
@@ -86,23 +59,14 @@ public class Cell {
 	}
 
 	public void setLeft(Boolean l) {
-		try {
-			if(true || false) 
-				left = l;
-			else {
-				throw new InvalidEntryException("Incorrect entry");
-			}
-		} catch (InvalidEntryException i) {
-
-			i.printStackTrace();
-		}
+				this.left = l;
 	}
 
 	public Boolean getLeft() {
 
 		return this.left;
 	}
-	public void setDirt(int d) {
+	public void setDirt(long d) {
 		try {
 			if(d >= 0) 
 				dirt = d;
@@ -115,7 +79,7 @@ public class Cell {
 		}
 	}
 
-	public int getDirt() {
+	public long getDirt() {
 
 		return this.dirt;
 	}
@@ -140,11 +104,13 @@ public class Cell {
 	// toString() for logging and debugging
 	@Override
 	public String toString() {
-		String result = "Cell : " + name + " ,forward : " + Boolean.toString(forward) + 
-			" ,back : " + Boolean.toString(back) + " ,left : " + Boolean.toString(left) + 
-			" ,right : "+ Boolean.toString(right) + " ,dirt : " + Integer.toString(dirt) +
-			" ,type : " + type;
+		System.out.println("printing");
+		String result = "Cell : " + this.name + " , forward : " + Boolean.toString(this.forward) + 
+			" , back : " + Boolean.toString(this.back) + " , left : " + Boolean.toString(this.left) + 
+			" , right : "+ Boolean.toString(this.right) + " , dirt : " + Long.toString(this.dirt) +
+			" , type : " + this.type;
 		return result; 
 	}
 
 }
+
