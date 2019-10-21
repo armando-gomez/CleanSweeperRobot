@@ -1,0 +1,129 @@
+{
+	"numRows" : 10,
+	"numCols" : 10,
+
+	"cells" : [
+		{ "forward" : true, "back" : false, "right" : true, "left" : false , "dirt" : 0, "type" : "low"},
+		{ "forward" : true , "back" : false, "right" : true , "left" : true , "dirt" : 0 , "type" :  "low"},
+		{ "forward" : true , "back" : false, "right" : true , "left" : true , "dirt" : 0 , "type" :  "low"},
+		{ "forward" : true , "back" : false, "right" : false , "left" : true , "dirt" : 0 , "type" :  "low"},
+		{ "forward" : true , "back" : false , "right" : true , "left" : false , "dirt" : 0 , "type" :  "bare"},
+		{ "forward" : true , "back" : false , "right" : false , "left" : true , "dirt" : 0 , "type" :  "bare"},
+		{ "forward" : true , "back" : false , "right" : true , "left" : false , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true , "back" : false , "right" : true , "left" : true , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true , "back" : false , "right" : true , "left" : true , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true , "back" : false , "right" : false , "left" : true , "dirt" : 0, "type" :  "bare"},
+
+
+
+		{ "forward" :  true, "back" :  true, "right" :  true, "left" : false , "dirt" : 0, "type" : "low"},
+		{ "forward" :  true, "back" :  true, "right" :  true, "left" :  true, "dirt" : 0, "type" :  "low"},
+		{ "forward" :  true, "back" :  true, "right" :  true, "left" :  true, "dirt" : 0, "type" :  "low"},
+		{ "forward" :  true, "back" :  true, "right" : false , "left" :  true, "dirt" : 0, "type" :  "low"},
+		{ "forward" :  true, "back" :  true, "right" :  true, "left" : false, "dirt" : 0, "type" :  "bare"},
+		{ "forward" :  true, "back" :  true, "right" : false , "left" : true , "dirt" : 0, "type" :  "bare"},
+		{ "forward" :  true, "back" :  true, "right" :  true, "left" : false , "dirt" : 0, "type" :  "bare"},
+		{ "forward" :  true, "back" :  true, "right" :  true, "left" :  true , "dirt" : 0, "type" :  "high" },
+		{ "forward" :  true, "back" :  true, "right" :  true, "left" :  true , "dirt" : 0, "type" : "high"},
+		{ "forward" :  true, "back" :  true, "right" : false , "left" :  true , "dirt" : 0, "type" : "bare" },
+
+
+
+		{ "forward" : true, "back" : true , "right" : true , "left" : false , "dirt" : 0, "type" : "low"},
+		{ "forward" : true, "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
+		{ "forward" : true, "back" : true , "right" : true , "left" :  true, "dirt" : 0, "type" : "low"},
+		{ "forward" : true, "back" : true , "right" : false , "left" :  true, "dirt" : 0, "type" : "low"},
+		{ "forward" :  true, "back" : true , "right" : true , "left" : false , "dirt" : 0, "type" : "bare"},
+		{ "forward" :  true, "back" : true , "right" : false , "left" :  true, "dirt" : 0, "type" : "bare"},
+		{ "forward" :  true, "back" : true , "right" : true , "left" : false, "dirt" : 0, "type" : "bare"},
+		{ "forward" :  true, "back" : true , "right" :  true, "left" :  true, "dirt" : 0, "type" : "high"},
+		{ "forward" :  true, "back" : true , "right" :  true, "left" :  true, "dirt" : 0, "type" : "high"},
+		{ "forward" :  true, "back" : true , "right" : false , "left" :  true, "dirt" : 0, "type" : "bare"},
+
+
+
+		{ "forward" : true , "back" : true , "right" : true , "left" : false, "dirt" : 0, "type" : "low"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
+		{ "forward" : true , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" : "low"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : false, "dirt" : 0, "type" : "bare"},
+		{ "forward" : true , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" : "bare"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : false, "dirt" : 0, "type" : "bare"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "high"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "high"},
+		{ "forward" : true , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" : "bare"},
+
+
+		{ "forward" : false , "back" : true, "right" : true , "left" : false , "dirt" : 0, "type" : "low"},
+		{ "forward" : false , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
+		{ "forward" : false , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
+		{ "forward" : false , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" : "low"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : false , "dirt" : 0, "type" : "bare"},
+		{ "forward" : true , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" : "bare"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : false , "dirt" : 0, "type" : "bare"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "high"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "high"},
+		{ "forward" : true , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" : "bare"},
+
+
+		{ "forward" : false , "back" : false , "right" : true , "left" : false, "dirt" : 0, "type" : "bare"},
+		{ "forward" : false , "back" : false , "right" : true , "left" : true , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : false , "back" : false , "right" : true , "left" : true , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : false , "back" : false , "right" : false, "left" : true , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : false, "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true , "back" : true , "right" : false, "left" : true , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : false, "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "high"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "high"},
+		{ "forward" : true , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" :  "bare"},
+
+
+		{ "forward" : false , "back" : false , "right" : true , "left" : false , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : false , "back" : false , "right" : false , "left" : true , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : false , "back" : false , "right" : true , "left" : false , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : false , "back" : false , "right" : false , "left" : true , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : false , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : false , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : false , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : false , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" :  "bare"},
+
+
+
+		{ "forward" : true , "back" : false , "right" : true  , "left" : false , "dirt" : 0, "type" : "low"},
+		{ "forward" : true , "back" : false , "right" : true  , "left" : true  , "dirt" : 0, "type" : "low"},
+		{ "forward" : true  , "back" : false , "right" : true  , "left" : true  , "dirt" : 0, "type" : "low"},
+		{ "forward" : true  , "back" : false , "right" : false , "left" : true  , "dirt" : 0, "type" : "low"},
+		{ "forward" : false , "back" : true  , "right" : true  , "left" : false , "dirt" : 0, "type" : "bare"},
+		{ "forward" : false , "back" : true  , "right" : false , "left" : true  , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true  , "back" : true  , "right" : true  , "left" : false , "dirt" : 0, "type" : "bare" },
+		{ "forward" : true  , "back" : true  , "right" : false , "left" : true  , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true  , "back" : false , "right" : true  , "left" : false , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : true  , "back" : false , "right" : false , "left" : true  , "dirt" : 0, "type" :  "bare"},
+
+
+		{ "forward" : true , "back" : true  , "right" : true  , "left" : false , "dirt" : 0, "type" : "low"},
+		{ "forward" : true  , "back" : true  , "right" : true  , "left" : true  , "dirt" : 0, "type" : "low"},
+		{ "forward" : true  , "back" : true  , "right" : true  , "left" : true  , "dirt" : 0, "type" : "low"},
+		{ "forward" : true  , "back" : true  , "right" : false , "left" : true  , "dirt" : 0, "type" : "low"},
+		{ "forward" : false , "back" : false , "right" : true  , "left" : false , "dirt" : 0, "type" : "bare"},
+		{ "forward" : false , "back" : false , "right" : false , "left" : true  , "dirt" : 0, "type" :  "bare"},
+		{ "forward" : false , "back" : true  , "right" : true  , "left" : false , "dirt" : 0, "type" : "bare" },
+		{ "forward" : false , "back" : true  , "right" : false , "left" : true  , "dirt" : 0, "type" : "bare" },
+		{ "forward" : true  , "back" : true  , "right" : true  , "left" : false , "dirt" : 0, "type" : "bare" },
+		{ "forward" : true  , "back" : true  , "right" : false , "left" : true , "dirt" : 0, "type" : "bare" },
+
+
+		{ "forward" : false , "back" : true , "right" : true , "left" : false  , "dirt" : 0, "type" : "low"},
+		{ "forward" : false  , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
+		{ "forward" : false  , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
+		{ "forward" : false  , "back" : true , "right" : false  , "left" : true , "dirt" : 0, "type" : "low"},
+		{ "forward" : false  , "back" : false  , "right" : true , "left" : false  , "dirt" : 0, "type" : "bare"},
+		{ "forward" : false  , "back" : false  , "right" : true , "left" : true , "dirt" : 0, "type" : "bare" },
+		{ "forward" : false  , "back" : false , "right" : true , "left" : true , "dirt" : 0, "type" : "bare" },
+		{ "forward" : false  , "back" : false  , "right" : false  , "left" : true , "dirt" : 0, "type" : "bare" },
+		{ "forward" : false  , "back" : true , "right" : true , "left" : false , "dirt" : 0, "type" : "bare" },
+		{ "forward" : false  , "back" : true , "right" : false  , "left" : true , "dirt" : 0, "type" : "bare" }
+	]
+}
