@@ -5,10 +5,6 @@ public class Layout {
 	private long numCols;
 	Cell[][] grid;
 
-	{
-		System.out.println("Initializing layout");
-	}
-
 	public void setNumRows(long rows) {
 		try {
 			if ( rows > 0 ) {
@@ -43,5 +39,18 @@ public class Layout {
 	public long getNumCols() {
 		return this.numCols;
 	
+	}
+	
+	public void populateGrid(Cell[] g) {
+		int k = 0;
+		for (int z = 0; z < g.length; z++)
+		grid = new Cell[(int) numRows][(int) numCols];
+		for (int i = (int)numRows-1; i >= 0; i--) {
+			for ( int j = 0; j < numCols; j++, k++) {
+				g[k].setName(i,j);
+				grid[i][j] = g[k];
+				System.out.println(grid[i][j].toString());
+			}
+		}
 	}
 }
