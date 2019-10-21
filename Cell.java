@@ -46,11 +46,10 @@ public class Cell {
 	}
 
 	public Boolean getBack() {
-
 		return this.back;
 	}
 	public void setRight(Boolean r) {
-				this.right = r;
+		this.right = r;
 	}
 
 	public Boolean geRight() {
@@ -59,11 +58,10 @@ public class Cell {
 	}
 
 	public void setLeft(Boolean l) {
-				this.left = l;
+		this.left = l;
 	}
 
 	public Boolean getLeft() {
-
 		return this.left;
 	}
 	public void setDirt(long d) {
@@ -80,9 +78,9 @@ public class Cell {
 	}
 
 	public long getDirt() {
-
 		return this.dirt;
 	}
+
 	public void setType(String t) {
 		try {
 			if(t.equals("bare") || t.equals("low") || t.equals("high")) 
@@ -97,14 +95,12 @@ public class Cell {
 	}
 
 	public String getType() {
-
 		return this.type;
 	}
 
 	// toString() for logging and debugging
 	@Override
 	public String toString() {
-		System.out.println("printing");
 		String result = "Cell : " + this.name + " , forward : " + Boolean.toString(this.forward) + 
 			" , back : " + Boolean.toString(this.back) + " , left : " + Boolean.toString(this.left) + 
 			" , right : "+ Boolean.toString(this.right) + " , dirt : " + Long.toString(this.dirt) +
