@@ -1,3 +1,6 @@
+//package com.groupseven;
+
+//import com.groupseven.InvalidEntryException;
 
 public class Cell {
 
@@ -33,6 +36,14 @@ public class Cell {
 	public String getName() {
 		return this.name;
 	}
+
+	//quick get of matrix coordinates
+	public int[] getCoords(String name) { 
+		char[] c = name.toCharArray();
+		int[] r = { Character.getNumericValue(c[1]),Character.getNumericValue(c[3]) };
+		return r;
+	} 
+
 	public void setForward(Boolean f) {
 		this.forward = f;
 	}
@@ -64,6 +75,8 @@ public class Cell {
 	public Boolean getLeft() {
 		return this.left;
 	}
+
+	// method to be able change the amount of dirt in cell to change in simulation or on creation
 	public void setDirt(long d) {
 		try {
 			if(d >= 0) 
@@ -101,10 +114,14 @@ public class Cell {
 	// toString() for logging and debugging
 	@Override
 	public String toString() {
+		String b = "grid[";
+		int[] c = getCoords(name);
+		b += Integer.toString((c[0])) + "][";
+		b += Integer.toString(c[1]) + "]";
 		String result = "Cell : " + this.name + " , forward : " + Boolean.toString(this.forward) + 
 			" , back : " + Boolean.toString(this.back) + " , left : " + Boolean.toString(this.left) + 
 			" , right : "+ Boolean.toString(this.right) + " , dirt : " + Long.toString(this.dirt) +
-			" , type : " + this.type;
+			" , type : " + this.type + ", with coordinnates of " + b;
 		return result; 
 	}
 
