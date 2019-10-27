@@ -1,6 +1,4 @@
-//package com.groupseven;
 
-//import com.groupseven.InvalidEntryException;
 
 public class Cell {
 
