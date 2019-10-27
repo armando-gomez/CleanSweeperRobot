@@ -1,0 +1,11 @@
+{
+	"numRows" : 2,
+	"numCols" : 2,
+	"cells" : [
+			{ "left" : false, "forward" : true, "right" : true, "back" : false, "dirt" : 0, "type" : "bare" },
+			{ "left" : true, "forward" : true, "right" : false, "back" : false, "dirt" : 0, "type" : "bare"},
+			{ "left" : false, "forward" : false, "right" : true, "back" : true, "dirt" : 0, "type" : "bare"},
+			{ "left" : true, "forward" : false, "right" : false, "back" : true, "dirt" : 0, "type" : "bare"}
+		]
+	
+}
