@@ -14,7 +14,6 @@ public class CellTest {
 	public void setTypeBareTest(){
 		Cell testCell = new Cell(false, true, true, true, 0, "bare");
 		testCell.setType("bare");
-		System.out.println(testCell.getType());
 		assertEquals(testCell.getType(), "bare");
 	}
 		
@@ -141,6 +140,45 @@ public class CellTest {
 //		Cell testCell = new Cell(false, false, false, false, 0, "bare");
 //		testCell.setType("Bare");
 //	}
+	
+	@Test
+	public void testGetType() {
+		Cell testCell = new Cell(false, false, false, false, 0, "bare");
+		assertEquals(testCell.getType(),"bare");
+	}
+	
+//	@Test
+//	public void testPutInvalidGetType() {
+//		Cell testCell = new Cell(false, false, false, false, 0, "aaa");
+//		assertEquals(testCell.getType(),"aaa");
+//	}
+	
+	@Test
+	public void toStringTest() {
+		Cell testCell = new Cell(false, false, false, false, 0, "bare");
+		String testString = testCell.toString();
+		System.out.println(testString);
+	}
+	
+	@Test
+	public void testDirt() {
+		Cell testCell = new Cell(false, false, false, false, 0, "bare");
+		assertEquals(testCell.getDirt(),0);
+	}
+	
+	@Test 
+	public void testDirtSetPositive() {
+		Cell testCell = new Cell(false, false, false, false, 0, "bare");
+		testCell.setDirt(999);
+		assertEquals(testCell.getDirt(),999);
+	}
+	
+	@Test 
+	public void testDirtSetNegative() {
+		Cell testCell = new Cell(false, false, false, false, 0, "bare");
+		testCell.setDirt(-12);
+		assertEquals(testCell.getDirt(),0);
+	}
 	
 	
 	//TODO assert different type
