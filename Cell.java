@@ -63,7 +63,7 @@ public class Cell {
 		this.right = r;
 	}
 
-	public Boolean geRight() {
+	public Boolean getRight() {
 
 		return this.right;
 	}

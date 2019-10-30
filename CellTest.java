@@ -7,7 +7,7 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 import org.junit.Assert.*;
 import org.junit.*;
-public class LayoutTest {
+public class CellTest {
 	
 	
 	@Test
@@ -37,43 +37,43 @@ public class LayoutTest {
 	@Test 
 	public void setBackTrueTest() {
 		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setForward(true);
-		assertEquals(testCell.getForward(),true);
+		testCell.setBack(true);
+		assertEquals(testCell.getBack(),true);
 	}
 	
 	@Test 
 	public void setBackFalseTest() {
 		Cell testCell = new Cell(true, false, false, false, 0, "bare");
-		testCell.setForward(false);
-		assertEquals(testCell.getForward(),false);
+		testCell.setBack(false);
+		assertEquals(testCell.getBack(),false);
 	}
 	
 	@Test 
 	public void setRightTrueTest() {
 		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setForward(true);
-		assertEquals(testCell.getForward(),true);
+		testCell.setRight(true);
+		assertEquals(testCell.getRight(),true);
 	}
 	
 	@Test 
 	public void setRightFalseTest() {
 		Cell testCell = new Cell(true, false, false, false, 0, "bare");
-		testCell.setForward(false);
-		assertEquals(testCell.getForward(),false);
+		testCell.setRight(false);
+		assertEquals(testCell.getRight(),false);
 	}
 	
 	@Test 
 	public void setLeftTrueTest() {
 		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setForward(true);
-		assertEquals(testCell.getForward(),true);
+		testCell.setLeft(true);
+		assertEquals(testCell.getLeft(),true);
 	}
 	
 	@Test 
 	public void setLeftFalseTest() {
 		Cell testCell = new Cell(true, false, false, false, 0, "bare");
-		testCell.setForward(false);
-		assertEquals(testCell.getForward(),false);
+		testCell.setLeft(false);
+		assertEquals(testCell.getLeft(),false);
 	}
 	
 	
