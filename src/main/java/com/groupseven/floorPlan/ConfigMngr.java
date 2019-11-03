@@ -1,6 +1,9 @@
 package com.groupseven.floorPlan;
 
 import java.io.*;
+
+import com.groupseven.SensorSimulator.SensorSimulator;
+import com.groupseven.logger.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
@@ -15,14 +18,15 @@ public class ConfigMngr {
 	private JSONArray jArray;
 	private FileReader in;
 	private String fileName;
-	private Layout layout;
+	private SensorSimulator sensor;
 	private Cell[] cell;
 	private Iterator<JSONObject> iterator;
+	public static Logger logger;
 
 	public ConfigMngr(String s) { 
 		this.fileName = s;
 		parser = new JSONParser();
-		layout = new Layout();
+		Layout layout = Layout.getInstance();
 		try {
 			in = new FileReader(s);
 			o = (JSONObject) parser.parse(in);
@@ -44,6 +48,7 @@ public class ConfigMngr {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		sensor = sensor.getInstance(layout);
 		
 	}
 
