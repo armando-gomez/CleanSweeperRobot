@@ -1,11 +1,15 @@
+package com.groupseven.floorPlan;
+
 import java.io.*;
+
+import com.groupseven.SensorSimulator.SensorSimulator;
+import com.groupseven.logger.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import org.json.simple.JSONObject;
-import java.util.Iterator;
 
+import java.util.Iterator;
 
 public class ConfigMngr {
 
@@ -14,19 +18,20 @@ public class ConfigMngr {
 	private JSONArray jArray;
 	private FileReader in;
 	private String fileName;
-	private Layout layout;
+	private SensorSimulator sensor;
 	private Cell[] cell;
 	private Iterator<JSONObject> iterator;
+	public static Logger logger;
 
 	public ConfigMngr(String s) { 
 		this.fileName = s;
 		parser = new JSONParser();
-		layout = new Layout();
+		Layout layout = Layout.getInstance();
 		try {
 			in = new FileReader(s);
 			o = (JSONObject) parser.parse(in);
-			layout.setNumRows( (long) o.get("numRows") );	
-			layout.setNumCols( (long) o.get("numCols") );	
+			layout.setNumRows( Long.parseLong(o.get("numRows").toString()) );
+			layout.setNumCols( Long.parseLong(o.get("numRows").toString()) );
 			jArray = (JSONArray) o.get("cells");
 			iterator = jArray.iterator();
 			long l = layout.getNumRows() * layout.getNumCols();
@@ -43,6 +48,7 @@ public class ConfigMngr {
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
+		sensor = sensor.getInstance(layout);
 		
 	}
 
