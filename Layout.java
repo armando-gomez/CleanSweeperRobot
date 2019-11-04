@@ -13,7 +13,6 @@ public class Layout {
 			else { 
 				throw new InvalidEntryException("Invlid entry");
 			}
-				
 		} catch (InvalidEntryException e) {
 			e.printStackTrace();
 		}
@@ -21,7 +20,6 @@ public class Layout {
 
 	public long getNumRows() {
 		return this.numRows;
-	
 	}
 
 	public void setNumCols(long cols) {
