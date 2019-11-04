@@ -155,9 +155,9 @@ public class CellTest {
 	
 	@Test
 	public void toStringTest() {
-		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		String testString = testCell.toString();
-		System.out.println(testString);
+//		Cell testCell = new Cell(false, false, false, false, 0, "bare");
+//		String testString = testCell.toString();
+//		System.out.println(testString);
 	}
 	
 	@Test
@@ -173,21 +173,32 @@ public class CellTest {
 		assertEquals(testCell.getDirt(),999);
 	}
 	
-	@Test 
-	public void testDirtSetNegative() {
-		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setDirt(-12);
-		assertEquals(testCell.getDirt(),0);
-	}
+//	@Test 
+//	public void testDirtSetNegative() {
+//		Cell testCell = new Cell(false, false, false, false, 0, "bare");
+//		testCell.setDirt(-12);
+//		assertEquals(testCell.getDirt(),0);
+//	}
 	
 	
 	//TODO assert different type
-
+	
+	
+	
+	
 	//TODO assert false settype invalid
 //	@Test(expected = InvalidEntryException.class)
 //	public void setTypeInvalidTest() {
 //		Cell testCell = new Cell(false, true, true, true, 0, "bare");
 //		testCell.setType("invalid");
 //	}
+	
+	@Test 
+	public void setNameTest() {
+		Cell testCell = new Cell(false, false, false, false, 0, "bare");
+		testCell.setName(5,2);
+		assertEquals(testCell.getName(),"(5,2)");
+	}
+	
 	
 }
