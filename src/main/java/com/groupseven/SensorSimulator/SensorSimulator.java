@@ -4,6 +4,9 @@ import com.groupseven.floorPlan.Layout;
 
 import java.awt.*;
 
+import static com.groupseven.CleanSweeperRobot.loggerFactory;
+import static com.groupseven.CleanSweeperRobot.logger;
+
 public final class SensorSimulator implements AskPermission{
 
     private static SensorSimulator s;
@@ -20,7 +23,8 @@ public final class SensorSimulator implements AskPermission{
 
     private SensorSimulator(Layout l) {
         this.l = l;
-        System.out.println("making Singleton SensorSimulatorr");
+        logger = loggerFactory.build('m');
+        logger.log("making Singleton Sensor Simulator", "SensorSimulator");
     }
 
 
