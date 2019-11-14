@@ -8,7 +8,7 @@ public class LoggerFactory {
                 return new LoggerDirtyImpl();
             case 'm' :
                 return new LoggerMakingImpl();
-            case 'M' :
+            case 'z' :
                 return new LoggerMaking2Impl();
             case 'r' :
                 return new LoggerReadingImpl();

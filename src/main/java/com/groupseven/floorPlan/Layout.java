@@ -11,8 +11,8 @@ import static com.groupseven.CleanSweeperRobot.logger;
 public final class Layout {
 
 	private static Layout l;
-	private long numRows;
-	private long numCols;
+	private int numRows;
+	private int numCols;
 	private Cell[][] grid;
 	private Door[] doors;
 	private Point[] chargingStations;
@@ -30,17 +30,19 @@ public final class Layout {
 		logger.log("making singleton Layout", "Layout");
 	}
 
-	public void setNumRows(long rows) {
+	public void setNumRows(int rows) {
 		try {
 			if (rows <= 0 ) {
 				throw new InvalidEntryException("Invalid entry");
 			}
 			else {
 				numRows = rows;
+				logger = loggerFactory.build('m');
+				logger.log("number of rows", "Layout");
 			}
 				
 		} catch (InvalidEntryException e) {
-			e.printStackTrace();
+			e.getMessage();
 		}
 	}
 
@@ -49,13 +51,15 @@ public final class Layout {
 	
 	}
 
-	public void setNumCols(long cols) {
+	public void setNumCols(int cols) {
 		try {
 			if (cols <= 0 ) {
 				throw new InvalidEntryException("Invalid entry");
 			}
 			else {
 				numCols = cols;
+				logger = loggerFactory.build('m');
+				logger.log("number of rows", "Layout");
 			}
 		} catch (InvalidEntryException e) {
 			e.printStackTrace();
@@ -69,7 +73,7 @@ public final class Layout {
 
 	public void setDoors(Door[] ds) {
 		this.doors = ds;
-		logger = loggerFactory.build('M');
+		logger = loggerFactory.build('z');
 		String txt = Integer.toString(ds.length) + ",doors,";
 		for (Door d : ds) {
 			txt += d.getPCoords() + ",";
@@ -87,7 +91,7 @@ public final class Layout {
 			txt += s;
 			i++;
 		}
-		logger = loggerFactory.build('M');
+		logger = loggerFactory.build('z');
 		logger.log(txt, "Layout");
 	}
 

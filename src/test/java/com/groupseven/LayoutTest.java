@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;*/
 
 public class LayoutTest {
 	
-	/*
+
 	@Test 
 	public void setNumRowsTest() {
 		Layout layout = Layout.getInstance();
@@ -62,8 +62,8 @@ public class LayoutTest {
 			layout.setNumCols(-3);
 		});
 	}
-	
-	@Test	
+
+	@Test
 	public void setNumColTest3() {
 		Layout layout =  Layout.getInstance();
 		Assertions.assertThrows(InvalidEntryException.class, () -> {
@@ -76,5 +76,5 @@ public class LayoutTest {
 		Layout layout =  Layout.getInstance();
 		layout.setNumCols(999999999);
 		assertEquals(layout.getNumCols(),999999999);
-	}*/
+	}
 }

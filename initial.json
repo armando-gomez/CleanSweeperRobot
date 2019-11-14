@@ -1,6 +1,8 @@
 {
 	"numRows" : 10,
 	"numCols" : 10,
+  "chargeMin" : 20,
+  "dirtCapacityMax" : 50,
 
 	"cells" : [
 		{ "forward" : true, "back" : false, "right" : true, "left" : false , "dirt" : 0, "type" : "low"},

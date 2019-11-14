@@ -4,6 +4,7 @@ import java.awt.*;
 import java.io.*;
 
 import com.groupseven.SensorSimulator.SensorSimulator;
+import com.groupseven.robot.Robot;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
@@ -31,8 +32,11 @@ public class ConfigMngr {
 	private Long[] ints;
 	private ArrayList<Point> points = new ArrayList<Point>();
 	private Iterator<JSONObject> iterator;
+    private int dirtCapacityMax;
+    private Double chargeMin;
+    private Point startingPoint;
 
-	public ConfigMngr(String s) {
+    public ConfigMngr(String s) {
 		this.fileName = s;
 		logger = loggerFactory.build('m');
 		logger.log("Configuration Manager", "ConfigMngr");
@@ -48,8 +52,16 @@ public class ConfigMngr {
 			logger.log(fileName, "Layout");
 			String c = in.toString();
 			o = (JSONObject) parser.parse(in);
-			layout.setNumRows( Long.parseLong(o.get("numRows").toString()) );
-			layout.setNumCols( Long.parseLong(o.get("numRows").toString()) );
+
+			//get matrix dimentions
+			layout.setNumRows( Integer.parseInt(o.get("numRows").toString()) );
+			layout.setNumCols( Integer.parseInt(o.get("numRows").toString()) );
+
+			//get robot "chargeMin" and "dirtCapacityMax"
+            chargeMin =	Double.parseDouble(o.get("chargeMin").toString());
+			dirtCapacityMax = Integer.parseInt(o.get("dirtCapacityMax").toString());
+
+
 			jArray = (JSONArray) o.get("cells");
 			iterator = jArray.iterator();
 			long l = layout.getNumRows() * layout.getNumCols();
@@ -77,16 +89,19 @@ public class ConfigMngr {
 				doors[i] = new Door(p1, p2, (String) n.get("s"), (String) n.get("nS"));
 				i++;
 			}
-			System.out.println(doors.length);
+			//System.out.println(doors.length);
 			layout.setDoors(doors);
 			jArray = (JSONArray) o.get("chargingStation");
 			iterator = jArray.iterator();
+			int counter = 0;
 			while(iterator.hasNext() && jArray.size() > 0) {
 				JSONObject n = iterator.next();
 				Point p = new Point();
 				p.x =  Integer.parseInt(n.get("x").toString());
 				p.y =  Integer.parseInt(n.get("y").toString());
 				points.add(p);
+				if (counter == 0)
+				    startingPoint = p;
 			}
 			layout.setChargingStations(points);
 		} catch (IOException e) {
@@ -97,6 +112,11 @@ public class ConfigMngr {
 		sensor = sensor.getInstance(layout);
 	}
 
+	public Robot makeRobot() {
+        logger = loggerFactory.build('m');
+        logger.log("Clean Sweeper Robot", "ConfigMngr");
+        return new Robot(chargeMin, dirtCapacityMax, startingPoint, points);
+    }
 	public static String getDate() {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyy-MM-dd 'at' HH:mm:ss");
 		Date date = new Date(System.currentTimeMillis());

@@ -4,6 +4,7 @@ import com.groupseven.floorPlan.ConfigMngr;
 import com.groupseven.floorPlan.Layout;
 import com.groupseven.logger.Logger;
 import com.groupseven.logger.LoggerFactory;
+import com.groupseven.robot.Robot;
 
 import java.io.*;
 import java.util.Scanner;
@@ -37,6 +38,7 @@ public class CleanSweeperRobot {
 			Scanner in = new Scanner(System.in);
 			String name = in.next();
 			ConfigMngr configMngr = new ConfigMngr(name);
+			Robot robot = configMngr.makeRobot();
 
 			//	Option to add dirt to Layout
 			System.out.println("Would you like add dirt to the program?\n 1 	yes \n 2	no");

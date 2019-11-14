@@ -3,6 +3,7 @@ package com.groupseven.robot;
 
 
 import com.groupseven.SensorSimulator.SensorSimulator;
+import com.groupseven.floorPlan.Layout;
 
 import java.awt.Point;
 import java.util.ArrayList;
@@ -10,23 +11,25 @@ import java.util.List;
 
 public class Robot {
     private double chargeLeft;
-    private double startingCharge = 100.00;
-    private final double chargeMin = 20.0;
+   /* private double startingCharge /*= 100.00;*/
+    private final double chargeMin /*= 20.0*/;
 
-    private int dirtCapacity = 0;
-    private final int dirtCapacityMax = 50;
+    private int dirtCapacity /*= 0*/;
+    private final int dirtCapacityMax /*= 50*/;
 
     private SensorSimulator simulator;
     private Point pos;
 
     private java.util.List<Point> chargingStations;
 
-    public Robot(SensorSimulator _simulator) {
-        this.setCharge(startingCharge);
-        this.simulator = _simulator;
-        this.setPos(new Point());
+    public Robot(/*SensorSimulator _simulator*/Double chargeMin, int dirtCapacityMax, Point startingPoint, ArrayList<Point> alp) {
+        this.setCharge(/*startingCharge*/100.00);
+        this.chargeMin = chargeMin;
+        this.dirtCapacityMax = dirtCapacityMax;
+        this.setPos(/*new Point()*/startingPoint);
         //this.setStartingPos(simulator.getStartingPos());
-        chargingStations = new ArrayList<Point>();
+        chargingStations = alp;
+        this.simulator = SensorSimulator.getInstance(Layout.getInstance())/*_simulator*/;
 
     }
 
@@ -71,7 +74,7 @@ public class Robot {
     }
 
     public void rechargePower() {
-        this.setCharge(startingCharge);
+        this.setCharge(/*startingCharge*/100.00);
     }
 
     public void addChargingStation(Point p) {
@@ -91,7 +94,7 @@ public class Robot {
         return closestStation;
     }
 
-    public boolean canMove(Point curr, int dir) {
+    public boolean canMove(Point curr, /*int*/String dir) {
         return true;
     }
 
