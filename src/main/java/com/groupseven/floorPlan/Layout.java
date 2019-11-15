@@ -48,7 +48,6 @@ public final class Layout {
 
 	public long getNumRows() {
 		return this.numRows;
-	
 	}
 
 	public void setNumCols(int cols) {

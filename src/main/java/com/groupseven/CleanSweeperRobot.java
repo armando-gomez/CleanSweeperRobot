@@ -11,17 +11,12 @@ import java.util.Scanner;
 
 
 public class CleanSweeperRobot {
-
 	public static Logger logger;
 	public static LoggerFactory loggerFactory = new LoggerFactory();
 	public static File out = new File("log.txt");
 	public static FileWriter fr = null;
 	public static BufferedWriter br = null;
 	public static PrintWriter pr = null;
-
-
-
-
 
 	public static void main(String[] args) {
 		try {
@@ -53,8 +48,6 @@ public class CleanSweeperRobot {
 			else {
 				System.out.println("Continuing Application");
 			}
-
-
 			//	Shut down the program.
 			logger = loggerFactory.build('s');
 			logger.log("program", "Main");

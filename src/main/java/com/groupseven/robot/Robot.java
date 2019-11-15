@@ -27,7 +27,6 @@ public class Robot {
         this.chargeMin = chargeMin;
         this.dirtCapacityMax = dirtCapacityMax;
         this.setPos(/*new Point()*/startingPoint);
-        //this.setStartingPos(simulator.getStartingPos());
         chargingStations = alp;
         this.simulator = SensorSimulator.getInstance(Layout.getInstance())/*_simulator*/;
 

@@ -20,9 +20,8 @@ import static com.groupseven.CleanSweeperRobot.logger;
 import static com.groupseven.CleanSweeperRobot.loggerFactory;
 
 public class ConfigMngr {
-
 	private JSONParser parser;
-	private JSONObject o;
+	private JSONObject jObject;
 	private JSONArray jArray;
 	private FileReader in;
 	private String fileName;
@@ -51,59 +50,68 @@ public class ConfigMngr {
 			logger = loggerFactory.build('r');
 			logger.log(fileName, "Layout");
 			String c = in.toString();
-			o = (JSONObject) parser.parse(in);
+			jObject = (JSONObject) parser.parse(in);
 
 			//get matrix dimentions
-			layout.setNumRows( Integer.parseInt(o.get("numRows").toString()) );
-			layout.setNumCols( Integer.parseInt(o.get("numRows").toString()) );
+			layout.setNumRows( Integer.parseInt(jObject.get("numRows").toString()) );
+			layout.setNumCols( Integer.parseInt(jObject.get("numRows").toString()) );
 
 			//get robot "chargeMin" and "dirtCapacityMax"
-            chargeMin =	Double.parseDouble(o.get("chargeMin").toString());
-			dirtCapacityMax = Integer.parseInt(o.get("dirtCapacityMax").toString());
+            chargeMin =	Double.parseDouble(jObject.get("chargeMin").toString());
+			dirtCapacityMax = Integer.parseInt(jObject.get("dirtCapacityMax").toString());
 
 
-			jArray = (JSONArray) o.get("cells");
+			jArray = (JSONArray) jObject.get("cells");
 			iterator = jArray.iterator();
 			long l = layout.getNumRows() * layout.getNumCols();
 			cell = new Cell[(int) l];
 			int i = 0;
 			while (iterator.hasNext() && jArray.size() > 0) {
-				JSONObject n = iterator.next();
-				cell[i] = new Cell((Boolean) n.get("forward"),(Boolean) n.get("back"),(Boolean)  n.get("right"),(Boolean)  n.get("left"), (Long) n.get("dirt"), (String) n.get("type"));
+				JSONObject o = iterator.next();
+				cell[i] = new Cell((Boolean) o.get("forward"),(Boolean) o.get("back"),(Boolean)  o.get("right"),(Boolean)  o.get("left"), (Long) o.get("dirt"), (String) o.get("type"));
 				i++;
 			}
 			layout.populateGrid(cell);
-			jArray = (JSONArray) o.get("doors");
+			jArray = (JSONArray) jObject.get("doors");
 			iterator = jArray.iterator();
 			doors = new Door[jArray.size()];
 			i = 0;
 
 			while(iterator.hasNext() && jArray.size() > 0) {
-				JSONObject n = iterator.next();
+				JSONObject o = iterator.next();
 				Point p1 = new Point();
 				Point p2 = new Point();
-				p1.x = Math.toIntExact((Long)n.get("p1x"));
-				p1.y = Math.toIntExact((Long)n.get("p1y"));
-				p2.x = Math.toIntExact((Long)n.get("p2x"));
-				p2.y = Math.toIntExact((Long)n.get("p2y"));
-				doors[i] = new Door(p1, p2, (String) n.get("s"), (String) n.get("nS"));
+				p1.x = Math.toIntExact((Long)o.get("p1x"));
+				p1.y = Math.toIntExact((Long)o.get("p1y"));
+				p2.x = Math.toIntExact((Long)o.get("p2x"));
+				p2.y = Math.toIntExact((Long)o.get("p2y"));
+				doors[i] = new Door(p1, p2, (String) o.get("s"), (String) o.get("nS"));
 				i++;
 			}
 			//System.out.println(doors.length);
 			layout.setDoors(doors);
-			jArray = (JSONArray) o.get("chargingStation");
+			jArray = (JSONArray) jObject.get("chargingStation");
 			iterator = jArray.iterator();
-			int counter = 0;
 			while(iterator.hasNext() && jArray.size() > 0) {
-				JSONObject n = iterator.next();
+				JSONObject o = iterator.next();
 				Point p = new Point();
-				p.x =  Integer.parseInt(n.get("x").toString());
-				p.y =  Integer.parseInt(n.get("y").toString());
+				p.x =  Integer.parseInt(o.get("x").toString());
+				p.y =  Integer.parseInt(o.get("y").toString());
 				points.add(p);
-				if (counter == 0)
-				    startingPoint = p;
+
 			}
 			layout.setChargingStations(points);
+
+			jArray = (JSONArray) jObject.get("robotStartingPos");
+			iterator = jArray.iterator();
+			while(iterator.hasNext()) {
+				JSONObject o = iterator.next();
+				Point p = new Point();
+				p.x = Integer.parseInt(o.get("x").toString());
+				p.y = Integer.parseInt(o.get("y").toString());
+				startingPoint = p;
+			}
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (ParseException e) {
