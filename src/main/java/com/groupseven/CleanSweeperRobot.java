@@ -18,6 +18,7 @@ public class CleanSweeperRobot {
 	public static FileWriter fr = null;
 	public static BufferedWriter br = null;
 	public static PrintWriter pr = null;
+	public static Robot robot;
 
 
 
@@ -38,7 +39,7 @@ public class CleanSweeperRobot {
 			Scanner in = new Scanner(System.in);
 			String name = in.next();
 			ConfigMngr configMngr = new ConfigMngr(name);
-			Robot robot = configMngr.makeRobot();
+			robot = configMngr.makeRobot();
 
 			//	Option to add dirt to Layout
 			System.out.println("Would you like add dirt to the program?\n 1 	yes \n 2	no");
@@ -53,7 +54,17 @@ public class CleanSweeperRobot {
 			else {
 				System.out.println("Continuing Application");
 			}
+			System.out.println("Would you like to change the doors in the program?\n 1 	yes \n 2	no");
+			num = in.nextInt();
+			if (num == 1) {
+				// add change doors
 
+				configMngr.changeDoorArray();
+				System.out.println("Returning from changing Doors.");
+			}
+			else {
+				System.out.println("Continuing Application");
+			}
 
 			//	Shut down the program.
 			logger = loggerFactory.build('s');

@@ -15,12 +15,12 @@ public class Cell {
 	private Boolean left;
 
 	//  amount of dirt present in cell and what type of floor in cell
-	private long dirt;
+	private int dirt;
 	private String type;
 
 	// constructor
 	public Cell( Boolean forward, Boolean back, Boolean right, Boolean left,
-			long dirt, String type) {
+			int dirt, String type) {
 		setForward(forward);
 		setBack(back);
 		setRight(right);
@@ -79,7 +79,7 @@ public class Cell {
 	}
 
 	// method to be able change the amount of dirt in cell to change in simulation or on creation
-	public void setDirt(long d) {
+	public void setDirt(int d) {
 		try {
 			if(d >= 0) 
 				dirt = d;

@@ -4,6 +4,7 @@ import java.awt.*;
 import java.io.*;
 
 import com.groupseven.SensorSimulator.SensorSimulator;
+import com.groupseven.exceptions.InvalidEntryException;
 import com.groupseven.robot.Robot;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
@@ -54,8 +55,12 @@ public class ConfigMngr {
 			o = (JSONObject) parser.parse(in);
 
 			//get matrix dimentions
-			layout.setNumRows( Integer.parseInt(o.get("numRows").toString()) );
-			layout.setNumCols( Integer.parseInt(o.get("numRows").toString()) );
+			try {
+				layout.setNumRows(Integer.parseInt(o.get("numRows").toString()));
+				layout.setNumCols(Integer.parseInt(o.get("numRows").toString()));
+			} catch (InvalidEntryException e) {
+				e.getMessage();
+			}
 
 			//get robot "chargeMin" and "dirtCapacityMax"
             chargeMin =	Double.parseDouble(o.get("chargeMin").toString());
@@ -69,7 +74,9 @@ public class ConfigMngr {
 			int i = 0;
 			while (iterator.hasNext() && jArray.size() > 0) {
 				JSONObject n = iterator.next();
-				cell[i] = new Cell((Boolean) n.get("forward"),(Boolean) n.get("back"),(Boolean)  n.get("right"),(Boolean)  n.get("left"), (Long) n.get("dirt"), (String) n.get("type"));
+                Long d = (Long) n.get("dirt");
+                int dirt = d.intValue();
+				cell[i] = new Cell((Boolean) n.get("forward"),(Boolean) n.get("back"),(Boolean)  n.get("right"),(Boolean)  n.get("left"),  dirt, (String) n.get("type"));
 				i++;
 			}
 			layout.populateGrid(cell);
@@ -89,7 +96,6 @@ public class ConfigMngr {
 				doors[i] = new Door(p1, p2, (String) n.get("s"), (String) n.get("nS"));
 				i++;
 			}
-			//System.out.println(doors.length);
 			layout.setDoors(doors);
 			jArray = (JSONArray) o.get("chargingStation");
 			iterator = jArray.iterator();
@@ -123,10 +129,16 @@ public class ConfigMngr {
 		return formatter.format(date);
 	}
 
+    //change all doors in Array
+	public void changeDoorArray() {
+        for (int i = 0; i < doors.length; i++) {
+            Layout.getInstance().changeDoor(i);
+        }
+    }
+
 	//	Add Dirt to size number of random cells and random amounts of dirt
 	public void addDirt(int size) {
 		//make a Point array of inputted size and add random amounts of dirt to cells
-
 		//	method variables
 		ArrayList<Point> points = new ArrayList<Point>();
 		int control = 0;
@@ -148,9 +160,22 @@ public class ConfigMngr {
 		int min = 1;
 		int range = max - min + 1;
 		for(Point p : points) {
-			Layout.getInstance().setCellDirt(p, (long) (Math.random() * range) + min);
+			Layout.getInstance().setCellDirt(p, (int) ((Math.random() * range) + min));
 		}
 	}
+
+    public static Double getValue(char c) {
+        switch (c) {
+            case 'b':
+                return 1.0;
+            case 'l':
+                return 2.0;
+            case 'h':
+                return 3.0;
+            default :
+                return 0.0;
+        }
+    }
 
 
 }
