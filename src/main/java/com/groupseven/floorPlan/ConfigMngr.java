@@ -96,7 +96,6 @@ public class ConfigMngr {
 				doors[i] = new Door(p1, p2, (String) n.get("s"), (String) n.get("nS"));
 				i++;
 			}
-			//System.out.println(doors.length);
 			layout.setDoors(doors);
 			jArray = (JSONArray) o.get("chargingStation");
 			iterator = jArray.iterator();
@@ -133,9 +132,7 @@ public class ConfigMngr {
     //change all doors in Array
 	public void changeDoorArray() {
         for (int i = 0; i < doors.length; i++) {
-            System.out.println("Changing door " + doors[i].toString());
             Layout.getInstance().changeDoor(i);
-            System.out.println("Changed door " + doors[i].toString());
         }
     }
 
@@ -166,6 +163,19 @@ public class ConfigMngr {
 			Layout.getInstance().setCellDirt(p, (int) ((Math.random() * range) + min));
 		}
 	}
+
+    public static Double getValue(char c) {
+        switch (c) {
+            case 'b':
+                return 1.0;
+            case 'l':
+                return 2.0;
+            case 'h':
+                return 3.0;
+            default :
+                return 0.0;
+        }
+    }
 
 
 }

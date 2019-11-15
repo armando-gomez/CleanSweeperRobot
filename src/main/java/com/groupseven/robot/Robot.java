@@ -9,9 +9,16 @@ import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Robot {
+import static com.groupseven.CleanSweeperRobot.*;
+
+
+public class Robot implements PowerMgmt{
+
+    // interface variables
+    private PowerMgmt powerManager;
+    private PowerMgmtFactory powerMgmtFactory = new PowerMgmtFactory();
+
     private double chargeLeft;
-   /* private double startingCharge /*= 100.00;*/
     private final double chargeMin;
 
     private int dirtCapacity;
@@ -19,15 +26,16 @@ public class Robot {
 
     private SensorSimulator simulator;
     private Point pos;
+    private Point nxtPos;
 
     private java.util.List<Point> chargingStations;
 
     public Robot(Double chargeMin, int dirtCapacityMax, Point startingPoint, ArrayList<Point> alp) {
-        this.setCharge(/*startingCharge*/100.00);
+        this.setCharge(250.00);
         this.chargeMin = chargeMin;
         this.dirtCapacityMax = dirtCapacityMax;
         this.setPos(startingPoint);
-        chargingStations = alp;
+        this.chargingStations = alp;
         this.simulator = SensorSimulator.getInstance(Layout.getInstance());
 
     }
@@ -64,8 +72,25 @@ public class Robot {
         this.pos = _pos;
     }
 
-    public void move(){
+    public Point getNxtPos() {
+        return this.nxtPos;
+    }
 
+    public void setNxtPos(Point _pos) {
+        this.nxtPos = _pos;
+    }
+
+    public void move(){
+        /*nxtPos needs to be set for the intended move, then robot needs to ask simulator
+        * if it can move, if it can move then do this power stuff
+        * */
+
+        Double prevCharge = robot.getCharge();
+        powerManager = powerMgmtFactory.build('m');
+        powerManager.changePower(pos);
+
+        logger = loggerFactory.build('p');
+        logger.log(prevCharge + " to " + robot.getCharge(), "Robot");
     }
 
     private void senseSurroundings() {
@@ -73,11 +98,7 @@ public class Robot {
     }
 
     public void rechargePower() {
-        this.setCharge(/*startingCharge*/100.00);
-    }
-
-    public void addChargingStation(Point p) {
-        this.chargingStations.add(p);
+        this.setCharge(250.00);
     }
 
     public List<Point> getChargingStations() {
@@ -93,9 +114,26 @@ public class Robot {
         return closestStation;
     }
 
-    public boolean canMove(Point curr, String dir) {
-        return simulator.askDir(curr, dir);
+    public boolean canMove(String dir) {
+        return simulator.askDir(nxtPos, dir);
     }
 
+    //clean method to be written later
+    public void clean() {
+        //do cleaning stuff
+        // decrement power level
+       changePower(pos);
+    }
+
+    //power methods
+    //@Override
+    public void changePower(Point p) {
+        Double prevCharge = robot.getCharge();
+        powerManager = powerMgmtFactory.build('c');
+        powerManager.changePower(p);
+
+        logger = loggerFactory.build('p');
+        logger.log(prevCharge + " to " + robot.getCharge(), "Robot");
+    }
 }
 

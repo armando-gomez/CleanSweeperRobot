@@ -73,7 +73,8 @@ public final class Layout {
 	}
 
 	public void changeDoor(int door) {
-	    Boolean previous = doors[door].getOpen();
+        logger = loggerFactory.build('c');
+        Boolean previous = doors[door].getOpen();
 	    char[] cs = doors[door].getS().toCharArray();
 	    if(doors[door].getOpen()) {
 	        switch (cs[0]) {
@@ -91,7 +92,6 @@ public final class Layout {
                     grid[(int) doors[door].getNeighbor().getX()][(int) doors[door].getNeighbor().getY()].setForward(false);
             }
             doors[door].setOpen(false);
-	        logger = loggerFactory.build('c');
 	        logger.log(doors[door].getPCoords() + " from " + previous + " to " + doors[door].getOpen(),"Layout");
         } else {
             switch (cs[0]) {
@@ -109,6 +109,7 @@ public final class Layout {
                     grid[(int) doors[door].getNeighbor().getX()][(int) doors[door].getNeighbor().getY()].setForward(true);
             }
             doors[door].setOpen(true);
+            logger.log(doors[door].getPCoords() + " from " + previous + " to " + doors[door].getOpen(),"Layout");
         }
     }
 
@@ -171,11 +172,11 @@ public final class Layout {
 				grid[i][j] = g[k];
 				logger = loggerFactory.build('m');
 				logger.log(grid[i][j].toString(), "Layout");
-				try {
+				/*try {
 					Thread.sleep(1000);
 				} catch (InterruptedException e) {
 					e.printStackTrace();
-				}
+				}*/
 			}
 		}
 	}

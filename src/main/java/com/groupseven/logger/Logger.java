@@ -60,7 +60,12 @@ class LoggerReadingImpl implements Logger {
         System.out.println(loc + " is reading " + txt + " on " + getDate());
     }
 }
-
+class LoggerPowerChangeImpl implements Logger {
+    public void log(String txt, String loc) {
+        pr.println(loc + " is changing power from " + txt + " on " + getDate());
+        System.out.println(loc + " is changing power from "  + txt + " on " + getDate());
+    }
+}
 class LoggerShutdownImpl implements Logger {
     public void log(String txt, String loc) {
         pr.println(loc + " is shutting down " + txt + " on " + getDate() + "\n\nEnd\n\n");
@@ -70,8 +75,8 @@ class LoggerShutdownImpl implements Logger {
 
 class LoggerDoorChangeImpl implements Logger {
     public void log(String txt, String loc) {
-        pr.println(loc + " is changing door  " + txt + " on " + getDate() + "\n\nEnd\n\n");
-        System.out.println(loc + " is changing door " + txt + " on " + getDate() + "\n\n");
+        pr.println(loc + " is changing door  " + txt + " on " + getDate());
+        System.out.println(loc + " is changing door " + txt + " on " + getDate());
     }
 }
 
