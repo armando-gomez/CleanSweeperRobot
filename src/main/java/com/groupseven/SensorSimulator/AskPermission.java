@@ -6,7 +6,7 @@ import java.awt.*;
 
 public interface AskPermission {
 
-    Boolean askDir(Point p, Layout l, String dir);
+    Boolean askDir(Point p, String dir);
 
 
 }
@@ -34,36 +34,36 @@ class AskPermissionFactory {
 
 class AskPermissionRightImpl implements AskPermission {
 
-    public Boolean askDir(Point p, Layout l, String dir) {
-        return l.getCellRight(p);
+    public Boolean askDir(Point p, String dir) {
+        return Layout.getInstance().getCellRight(p);
     }
 }
 
 class AskPermissionLeftImpl implements AskPermission {
 
-    public Boolean askDir(Point p, Layout l, String dir) {
-        return l.getCellLeft(p);
+    public Boolean askDir(Point p, String dir) {
+        return Layout.getInstance().getCellLeft(p);
     }
 }
 
 class AskPermissionForwardImpl implements AskPermission {
 
-    public Boolean askDir(Point p, Layout l, String dir) {
-        return l.getCellForward(p);
+    public Boolean askDir(Point p, String dir) {
+        return Layout.getInstance().getCellForward(p);
     }
 
 }
 
 class AskPermissionBackImpl implements AskPermission {
 
-    public Boolean askDir(Point p, Layout l, String dir) {
-        return l.getCellBack(p);
+    public Boolean askDir(Point p, String dir) {
+        return Layout.getInstance().getCellBack(p);
     }
 }
 
 class AskPermissionInvalidImpl implements AskPermission {
 
-    public Boolean askDir(Point p, Layout l, String dir) {
+    public Boolean askDir(Point p, String dir) {
         return false;
     }
 }

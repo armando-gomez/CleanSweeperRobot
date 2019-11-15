@@ -33,9 +33,9 @@ public final class SensorSimulator implements AskPermission{
     }
 
     //  interface methods --- AskPermission
-    public Boolean askDir(Point p, Layout l, String dir) {
+    public Boolean askDir(Point p, String dir) {
         asker = askFact.build(dir);
-        return asker.askDir(p, l, dir);
+        return asker.askDir(p, dir);
 
     }
 }

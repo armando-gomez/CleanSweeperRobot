@@ -8,7 +8,7 @@ public class Door {
     private String s;
     private Point neighbor;
     private String neighborS;
-    private Boolean open;
+    private Boolean open = false;
 
     public Door(Point p1, Point p2, String s1, String s2) {
         setP(p1); setNeighbor(p2); setS(s1); setNeighborS(s2);
@@ -31,10 +31,13 @@ public class Door {
         this.s = s;
     }
 
-    /*public Point getNeighbor() {
-        return neighbor;
+    public Point getNeighbor() {
+        return new Point((int) neighbor.getX(), (int) neighbor.getY());
     }
-*/
+
+    public Point getP() {
+        return new Point((int) p.getX(), (int) p.getY());
+    }
     public void setNeighbor(Point neighbor) {
         this.neighbor = neighbor;
     }
@@ -53,5 +56,9 @@ public class Door {
 
     public void setOpen(Boolean open) {
         this.open = open;
+    }
+
+    public String toString() {
+        return p.toString() + "Door is open : " + open;
     }
 }
