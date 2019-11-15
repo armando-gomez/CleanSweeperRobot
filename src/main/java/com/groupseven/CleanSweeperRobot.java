@@ -53,7 +53,17 @@ public class CleanSweeperRobot {
 			else {
 				System.out.println("Continuing Application");
 			}
+			System.out.println("Would you like to change the doors in the program?\n 1 	yes \n 2	no");
+			num = in.nextInt();
+			if (num == 1) {
+				// add change doors
 
+				configMngr.changeDoorArray();
+				System.out.println("Returning from changing Doors.");
+			}
+			else {
+				System.out.println("Continuing Application");
+			}
 
 			//	Shut down the program.
 			logger = loggerFactory.build('s');

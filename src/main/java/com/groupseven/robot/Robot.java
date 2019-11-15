@@ -12,24 +12,23 @@ import java.util.List;
 public class Robot {
     private double chargeLeft;
    /* private double startingCharge /*= 100.00;*/
-    private final double chargeMin /*= 20.0*/;
+    private final double chargeMin;
 
-    private int dirtCapacity /*= 0*/;
-    private final int dirtCapacityMax /*= 50*/;
+    private int dirtCapacity;
+    private final int dirtCapacityMax;
 
     private SensorSimulator simulator;
     private Point pos;
 
     private java.util.List<Point> chargingStations;
 
-    public Robot(/*SensorSimulator _simulator*/Double chargeMin, int dirtCapacityMax, Point startingPoint, ArrayList<Point> alp) {
+    public Robot(Double chargeMin, int dirtCapacityMax, Point startingPoint, ArrayList<Point> alp) {
         this.setCharge(/*startingCharge*/100.00);
         this.chargeMin = chargeMin;
         this.dirtCapacityMax = dirtCapacityMax;
-        this.setPos(/*new Point()*/startingPoint);
-        //this.setStartingPos(simulator.getStartingPos());
+        this.setPos(startingPoint);
         chargingStations = alp;
-        this.simulator = SensorSimulator.getInstance(Layout.getInstance())/*_simulator*/;
+        this.simulator = SensorSimulator.getInstance(Layout.getInstance());
 
     }
 
@@ -94,8 +93,8 @@ public class Robot {
         return closestStation;
     }
 
-    public boolean canMove(Point curr, /*int*/String dir) {
-        return true;
+    public boolean canMove(Point curr, String dir) {
+        return simulator.askDir(curr, dir);
     }
 
 }

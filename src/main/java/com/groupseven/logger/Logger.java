@@ -68,6 +68,13 @@ class LoggerShutdownImpl implements Logger {
     }
 }
 
+class LoggerDoorChangeImpl implements Logger {
+    public void log(String txt, String loc) {
+        pr.println(loc + " is changing door  " + txt + " on " + getDate() + "\n\nEnd\n\n");
+        System.out.println(loc + " is changing door " + txt + " on " + getDate() + "\n\n");
+    }
+}
+
 class LoggerNotImpl implements Logger{
     public void log(String txt, String loc) {
         pr.println("nothing");

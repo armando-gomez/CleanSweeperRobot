@@ -14,6 +14,8 @@ public class LoggerFactory {
                 return new LoggerReadingImpl();
             case 's' :
                 return new LoggerShutdownImpl();
+            case 'c' :
+                return new LoggerDoorChangeImpl();
             default :
                 return new LoggerNotImpl();
         }
