@@ -1,131 +1,69 @@
-package com.groupseven.floorPlan;
-
-import com.groupseven.exceptions.InvalidEntryException;
-
-import java.awt.Point;
+package com.groupseven.floorplan;
 
 public class Cell {
-
-	private String name;	
-
-	// variables to simulate if a cell is blocke in any direction
-	private Boolean forward;
-	private Boolean back;
-	private Boolean right;
-	private Boolean left;
-
-	//  amount of dirt present in cell and what type of floor in cell
+	private boolean north;
+	private boolean south;
+	private boolean east;
+	private boolean west;
 	private int dirt;
 	private String type;
+	private boolean hasChargingStation;
+	private boolean hasRobot;
 
-	// constructor
-	public Cell( Boolean forward, Boolean back, Boolean right, Boolean left,
-			int dirt, String type) {
-		setForward(forward);
-		setBack(back);
-		setRight(right);
-		setLeft(left);
-		setDirt(dirt);
-		setType(type);
+	public Cell(boolean north, boolean south, boolean east, boolean west, int dirt, String type) {
+		this.north = north;
+		this.south = south;
+		this.east = east;
+		this.west = west;
+		this.dirt = dirt;
+		this.type = type;
+		this.hasChargingStation = false;
+		this.hasRobot = false;
 	}
 
-	// getters and setters, with checks
-	public void setName(int i, int j) {
-		name = "(" + Integer.toString(i);
-		name += "," + Integer.toString(j)+ ")";
+	public Cell() {
+		this.hasChargingStation = false;
+		this.hasRobot = false;
 	}
 
-	public String getName() {
-		return this.name;
+	public void setDirt(int dirt) {
+		this.dirt = dirt;
 	}
 
-	//quick get of matrix coordinates
-	public Point getCoords(String name) { 
-		char[] c = name.toCharArray();
-		Point p = new Point(Character.getNumericValue(c[1]),Character.getNumericValue(c[3]));
-		return p;
-	} 
-
-	public void setForward(Boolean f) {
-		this.forward = f;
+	public void setNorth(boolean north) {
+		this.north = north;
 	}
 
-	public Boolean getForward() {
-		return this.forward;
+	public void setSouth(boolean south) {
+		this.south = south;
 	}
 
-	public void setBack(Boolean b) {
-		this.back = b;
+	public void setEast(boolean east) {
+		this.east = east;
 	}
 
-	public Boolean getBack() {
-		return this.back;
-	}
-	public void setRight(Boolean r) {
-		this.right = r;
+	public void setWest(boolean west) {
+		this.west = west;
 	}
 
-	public Boolean getRight() {
-
-		return this.right;
+	public void setType(String type) {
+		this.type = type;
 	}
 
-	public void setLeft(Boolean l) {
-		this.left = l;
+	public boolean checkHasChargingStation() {
+		return this.hasChargingStation;
 	}
 
-	public Boolean getLeft() {
-		return this.left;
+	public void setHasChargingStation(boolean chargingStation) {
+		this.hasChargingStation = chargingStation;
 	}
 
-	// method to be able change the amount of dirt in cell to change in simulation or on creation
-	public void setDirt(int d) {
-		try {
-			if(d >= 0) 
-				dirt = d;
-			else {
-				throw new InvalidEntryException("Incorrect entry");
-			}
-		} catch (InvalidEntryException i) {
-
-			i.printStackTrace();
-		}
+	public boolean checkHasRobot() {
+		return this.hasRobot;
 	}
 
-	public long getDirt() {
-		return this.dirt;
-	}
-
-	public void setType(String t) {
-		try {
-			if(t.equals("bare") || t.equals("low") || t.equals("high")) 
-				type = t;
-			else {
-				throw new InvalidEntryException("Incorrect entry");
-			}
-		} catch (InvalidEntryException i) {
-
-			i.printStackTrace();
-		}
-	}
-
-	public String getType() {
-		return this.type;
-	}
-
-	// toString() for logging and debugging
-	@Override
-	public String toString() {
-		String b = "grid[";
-		Point p = getCoords(name);
-		b += Double.toString(p.getX()) + "][";
-		b += Double.toString(p.getY()) + "]";
-		String result = "Cell : " + this.name + " , forward : " + Boolean.toString(this.forward) + 
-			" , back : " + Boolean.toString(this.back) + " , left : " + Boolean.toString(this.left) + 
-			" , right : "+ Boolean.toString(this.right) + " , dirt : " + Long.toString(this.dirt) +
-			" , type : " + this.type + ", with coordinnates of " + b;
-		return result; 
+	public void setHasRobot(boolean robot) {
+		this.hasRobot = robot;
 	}
 
 }
-
