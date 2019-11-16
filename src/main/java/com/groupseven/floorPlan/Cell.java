@@ -26,24 +26,48 @@ public class Cell {
 		this.hasRobot = false;
 	}
 
+	public int getDirt() {
+		return this.dirt;
+	}
+
 	public void setDirt(int dirt) {
 		this.dirt = dirt;
+	}
+
+	public boolean getNorth() {
+		return this.north;
 	}
 
 	public void setNorth(boolean north) {
 		this.north = north;
 	}
 
+	public boolean getSouth() {
+		return this.south;
+	}
+
 	public void setSouth(boolean south) {
 		this.south = south;
+	}
+
+	public boolean getEast() {
+		return this.east;
 	}
 
 	public void setEast(boolean east) {
 		this.east = east;
 	}
 
+	public boolean getWest() {
+		return this.west;
+	}
+
 	public void setWest(boolean west) {
 		this.west = west;
+	}
+
+	public String getType() {
+		return this.type;
 	}
 
 	public void setType(String type) {
@@ -65,5 +89,6 @@ public class Cell {
 	public void setHasRobot(boolean robot) {
 		this.hasRobot = robot;
 	}
+
 
 }

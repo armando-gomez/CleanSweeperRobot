@@ -12,10 +12,14 @@ public final class Layout {
 	private Point robotStartingPos;
 
 	public static Layout getInstance() {
-		if(layout == null) {
+		if (layout == null) {
 			layout = new Layout();
 		}
 		return layout;
+	}
+
+	private Layout() {
+		chargingStations = new ArrayList<Point>();
 	}
 
 	public void populateGrid(Cell[][] cells) {
@@ -23,13 +27,13 @@ public final class Layout {
 	}
 
 	public void setNumRows(int rows) {
-		if(rows > 0) {
+		if (rows > 0) {
 			numRows = rows;
 		}
 	}
 
 	public void setNumCols(int cols) {
-		if(cols > 0) {
+		if (cols > 0) {
 			numCols = cols;
 		}
 	}
@@ -50,11 +54,39 @@ public final class Layout {
 
 	public void setRobotStartingPos(Point p) {
 		this.robotStartingPos = p;
-		Cell cell = grid[(int) p.getX()][(int) p.getY()];
-		cell.setHasRobot(true);
 	}
 
 	public Point getRobotStartingPos() {
 		return this.robotStartingPos;
 	}
+
+	public String getCellType(Point p) {
+		Cell c = grid[(int) p.getX()][(int) p.getY()];
+		return c.getType();
+	}
+
+	public boolean getCellNeighbor(Point p, String dir) {
+		if(dir.equals("n")) {
+			return grid[(int) p.getX()][(int) p.getY()].getNorth();
+		} else if(dir.equals("s")) {
+			return grid[(int) p.getX()][(int) p.getY()].getSouth();
+		} else if(dir.equals("e")) {
+			return grid[(int) p.getX()][(int) p.getY()].getEast();
+		} else if(dir.equals("w")){
+			return grid[(int) p.getX()][(int) p.getY()].getWest();
+		}
+		return false;
+	}
+
+	public boolean cellHasDirt(Point p) {
+		int dirt = grid[(int) p.getX()][(int) p.getY()].getDirt();
+		return dirt > 0;
+	}
+
+	public void updateDirt(Point p, int change) {
+		Cell c = grid[(int) p.getX()][(int) p.getY()];
+		c.setDirt(c.getDirt() + change);
+		return;
+	}
+
 }

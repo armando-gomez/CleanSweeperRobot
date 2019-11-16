@@ -2,6 +2,8 @@ package com.groupseven.sensorsimulator;
 
 import com.groupseven.floorplan.Layout;
 
+import java.awt.*;
+
 public class SensorSimulator {
 	private static SensorSimulator sim;
 	private Layout layout;
@@ -15,5 +17,26 @@ public class SensorSimulator {
 
 	private SensorSimulator(Layout layout) {
 		this.layout = layout;
+	}
+
+	public Point getStartingPos() {
+		return layout.getRobotStartingPos();
+	}
+
+	public boolean canMove(Point p, String dir) {
+		return layout.getCellNeighbor(p, dir);
+	}
+
+	public String askType(Point p) {
+		return layout.getCellType(p);
+	}
+
+	public boolean cellHasDirt(Point p) {
+		return layout.cellHasDirt(p);
+	}
+
+	public void updateDirt(Point p) {
+		layout.updateDirt(p, -1);
+		return;
 	}
 }

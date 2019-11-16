@@ -21,6 +21,21 @@ public class CleanSweeper {
 			layout = FileParser.parseFile(fileName);
 			Robot robot = new Robot(SensorSimulator.getInstance(layout));
 
+			System.out.print("Would you like to start cleaning? y/n: ");
+			String response;
+			do {
+				response = in.next();
+				if(response.equals("y") || response.equals("Y")) {
+					robot.start();
+					break;
+				} else {
+					System.out.println();
+					System.out.print("Would you like to start cleaning? y/n: ");
+				}
+			} while(!(response.equals("y") || response.equals("Y")));
+
+
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
