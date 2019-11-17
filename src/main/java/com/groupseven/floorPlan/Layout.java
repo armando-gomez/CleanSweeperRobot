@@ -1,3 +1,6 @@
+package com.groupseven.floorPlan;
+
+import com.groupseven.exceptions.InvalidEntryException;
 
 public class Layout {
 

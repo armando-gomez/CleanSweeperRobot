@@ -1,9 +1,10 @@
+package com.groupseven.floorPlan;
+
 import java.io.*;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-import orgjson.simple.JSONObject;
 import java.util.Iterator;
 
 public class ConfigMngr {
@@ -24,8 +25,6 @@ public class ConfigMngr {
 		try {
 			in = new FileReader(s);
 			o = (JSONObject) parser.parse(in);
-			layout.setNumRows( (long) o.get("numRows") );	
-			layout.setNumCols( (long) o.get("numCols") );	
 			jArray = (JSONArray) o.get("cells");
 			iterator = jArray.iterator();
 			long l = layout.getNumRows() * layout.getNumCols();
