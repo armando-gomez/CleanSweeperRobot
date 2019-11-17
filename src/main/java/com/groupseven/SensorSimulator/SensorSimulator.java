@@ -39,4 +39,16 @@ public class SensorSimulator {
 		layout.updateDirt(p, -1);
 		return;
 	}
+
+	public int currDirt(Point p) {
+		return layout.getDirt(p);
+	}
+
+	public int width() {
+		return layout.getNumCols();
+	}
+
+	public int height() {
+		return layout.getNumRows();
+	}
 }

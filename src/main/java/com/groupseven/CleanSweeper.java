@@ -15,14 +15,21 @@ public class CleanSweeper {
 		try {
 			System.out.println("Welcome to Group7's Clean Sweeper Robot!");
 			in = new Scanner(System.in);
-			System.out.println("Please type the file name of the room you would like to explore: ");
+			System.out.print("Please type the file name of the room you would like to explore: ");
 			String fileName = in.nextLine();
+			String response;
 
 			layout = FileParser.parseFile(fileName);
+
+			System.out.print("Would you like add dirt to the program?: y(n) ");
+			response = in.next();
+			if(response.equals("y") || response.equals("Y")) {
+				layout.randomizeDirt();
+			}
+
 			Robot robot = new Robot(SensorSimulator.getInstance(layout));
 
 			System.out.print("Would you like to start cleaning? y/n: ");
-			String response;
 			do {
 				response = in.next();
 				if(response.equals("y") || response.equals("Y")) {
@@ -33,9 +40,6 @@ public class CleanSweeper {
 					System.out.print("Would you like to start cleaning? y/n: ");
 				}
 			} while(!(response.equals("y") || response.equals("Y")));
-
-
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

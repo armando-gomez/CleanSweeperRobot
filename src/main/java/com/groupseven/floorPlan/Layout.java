@@ -2,6 +2,7 @@ package com.groupseven.floorplan;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public final class Layout {
 	private static Layout layout;
@@ -83,10 +84,25 @@ public final class Layout {
 		return dirt > 0;
 	}
 
+	public int getDirt(Point p) {
+		Cell c = grid[(int) p.getX()][(int) p.getY()];
+		return c.getDirt();
+	}
+
 	public void updateDirt(Point p, int change) {
 		Cell c = grid[(int) p.getX()][(int) p.getY()];
 		c.setDirt(c.getDirt() + change);
 		return;
+	}
+
+	public void randomizeDirt() {
+		for(int row = 0; row < getNumRows(); row++) {
+			for(int col = 0; col < getNumCols(); col++) {
+				Cell c = grid[row][col];
+				int rand = (int) (Math.random() * ((4 - 0) + 1)) + 0;
+				c.setDirt(c.getDirt() + rand);
+			}
+		}
 	}
 
 }
