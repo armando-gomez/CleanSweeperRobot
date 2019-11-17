@@ -29,7 +29,7 @@ public class Robot implements PowerMgmt{
 
     private java.util.List<Point> chargingStations;
     private List<Point> cleaned;
-    private boolean cleaning;
+    private boolean cleaning = true;
     private List<Point> pathHistory;
     private boolean stuck;
 

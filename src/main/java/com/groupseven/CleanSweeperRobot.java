@@ -66,6 +66,7 @@ public class CleanSweeperRobot {
 				System.out.println("Continuing Application");
 			}
 
+			// start cleaning process
 			System.out.print("Would you like to start cleaning? y/n: ");
 			String response;
 			do {
