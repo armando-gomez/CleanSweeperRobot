@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-package com.groupseven.floorplan;
-=======
 package src.main.java.com.groupseven.floorPlan;
->>>>>>> bd480fa16dbf1478e093a0d341c2e5fc48168656
 
 import java.awt.*;
 import java.util.ArrayList;
