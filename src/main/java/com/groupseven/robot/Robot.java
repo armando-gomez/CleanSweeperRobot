@@ -238,10 +238,10 @@ public class Robot implements PowerMgmt{
         Point closestPoint = chargingStations.get(0);
         int closestDistance = distance(p, closestPoint);
         for (int i = 1; i < chargingStations.size(); i++) {
-            Point temp = chargingStations.get(i);
-            if (closestDistance > distance(p, temp)) {
-                closestDistance = distance(p, temp);
-                closestPoint = temp;
+            Point p2 = chargingStations.get(i);
+            if (closestDistance > distance(p2, p2)) {
+                closestDistance = distance(p2, p2);
+                closestPoint = p2;
             }
         }
         return closestPoint;
