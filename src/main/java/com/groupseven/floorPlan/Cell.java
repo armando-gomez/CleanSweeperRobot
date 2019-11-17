@@ -1,4 +1,4 @@
-package com.groupseven.floorplan;
+package src.main.java.com.groupseven.floorPlan;
 
 public class Cell {
 	private boolean north;
@@ -89,6 +89,5 @@ public class Cell {
 	public void setHasRobot(boolean robot) {
 		this.hasRobot = robot;
 	}
-
 
 }
