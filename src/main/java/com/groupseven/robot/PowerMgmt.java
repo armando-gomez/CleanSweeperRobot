@@ -9,7 +9,6 @@ import static com.groupseven.CleanSweeperRobot.robot;
 import static com.groupseven.floorPlan.ConfigMngr.getValue;
 
 public interface PowerMgmt {
-
     void changePower(Point p);
 }
 
@@ -27,7 +26,6 @@ class PowerMgmtFactory {
 }
 
 class PowerMgmtCleanImpl implements PowerMgmt {
-    
     public void changePower(Point p) {
 
         char[] cs = Layout.getInstance().getCellType(p).toCharArray();
@@ -40,7 +38,6 @@ class PowerMgmtCleanImpl implements PowerMgmt {
 }
 
 class PowerMgmtMoveImpl implements PowerMgmt {
-
     public void changePower(Point p) {
         Point p2 = robot.getNxtPos();
         char[] cs1 = Layout.getInstance().getCellType(p).toCharArray();
@@ -57,7 +54,6 @@ class PowerMgmtMoveImpl implements PowerMgmt {
 }
 
 class PowerMgmtImpl implements PowerMgmt {
-    
     public void changePower(Point p) {
         System.out.println("Done nothing");
     }

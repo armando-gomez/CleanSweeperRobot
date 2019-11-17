@@ -43,7 +43,6 @@ public final class Layout {
 
 	public long getNumRows() {
 		return this.numRows;
-	
 	}
 
 	public void setNumCols(int cols) throws InvalidEntryException{
@@ -59,7 +58,6 @@ public final class Layout {
 
 	public long getNumCols() {
 		return this.numCols;
-	
 	}
 
 	public void setDoors(Door[] ds) {
@@ -154,7 +152,6 @@ public final class Layout {
 		logger.log(Integer.toString((int)p.getX()) + "," + Integer.toString((int)p.getY()) + "," + Long.toString(num), "Layout");
 		grid[(int)p.getX()][(int)p.getY()].setDirt(num);
 	}
-
 
 	//get Cell string from Grid
 	public String getCellString(Point p) {
