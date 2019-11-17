@@ -1,98 +1,108 @@
-package com.groupseven.floorPlan;
-
-import com.groupseven.exceptions.InvalidEntryException;
-import com.groupseven.logger.Logger;
-import com.groupseven.logger.LoggerFactory;
+package com.groupseven.floorplan;
 
 import java.awt.*;
-
-import static com.groupseven.floorPlan.ConfigMngr.logger;
+import java.util.ArrayList;
+import java.util.Random;
 
 public final class Layout {
-
-	private static Layout l;
-	private long numRows;
-	private long numCols;
+	private static Layout layout;
+	private int numRows;
+	private int numCols;
 	private Cell[][] grid;
-	private Logger logger;
-	private LoggerFactory loggerFactory = new LoggerFactory();
-
+	private ArrayList<Point> chargingStations;
+	private Point robotStartingPos;
 
 	public static Layout getInstance() {
-
-		if (l == null)
-			l = new Layout();
-		return l;
+		if (layout == null) {
+			layout = new Layout();
+		}
+		return layout;
 	}
 
 	private Layout() {
-		System.out.println("making singleton Layout");
+		chargingStations = new ArrayList<Point>();
 	}
 
-	public void setNumRows(long rows) {
-		try {
-			if ( rows > 0 ) {
-				numRows = rows;
-			}
-			else { 
-				throw new InvalidEntryException("Invlid entry");
-			}
-				
-		} catch (InvalidEntryException e) {
-			e.printStackTrace();
+	public void populateGrid(Cell[][] cells) {
+		grid = cells;
+	}
+
+	public void setNumRows(int rows) {
+		if (rows > 0) {
+			numRows = rows;
 		}
 	}
 
-	public long getNumRows() {
+	public void setNumCols(int cols) {
+		if (cols > 0) {
+			numCols = cols;
+		}
+	}
+
+	public int getNumRows() {
 		return this.numRows;
-	
 	}
 
-	public void setNumCols(long cols) {
-		try {
-			if ( cols > 0 )
-				numCols = cols;
-			else { 
-				throw new InvalidEntryException("Invlid entry");
-			}
-		} catch (InvalidEntryException e) {
-			e.printStackTrace();
-		}
-	}
-
-	public long getNumCols() {
+	public int getNumCols() {
 		return this.numCols;
-	
 	}
 
-	//get Cell information from grid
+	public void setChargingStationPos(Point p) {
+		chargingStations.add(p);
+		Cell cell = grid[(int) p.getX()][(int) p.getY()];
+		cell.setHasChargingStation(true);
+	}
+
+	public void setRobotStartingPos(Point p) {
+		this.robotStartingPos = p;
+	}
+
+	public Point getRobotStartingPos() {
+		return this.robotStartingPos;
+	}
+
 	public String getCellType(Point p) {
-		return grid[(int) p.getX()][(int) p.getY()].getType();
+		Cell c = grid[(int) p.getX()][(int) p.getY()];
+		return c.getType();
 	}
-	public Boolean getCellRight(Point p) {
-		return grid[(int) p.getX()][(int) p.getY()].getRight();
+
+	public boolean getCellNeighbor(Point p, String dir) {
+		if(dir.equals("n")) {
+			return grid[(int) p.getX()][(int) p.getY()].getNorth();
+		} else if(dir.equals("s")) {
+			return grid[(int) p.getX()][(int) p.getY()].getSouth();
+		} else if(dir.equals("e")) {
+			return grid[(int) p.getX()][(int) p.getY()].getEast();
+		} else if(dir.equals("w")){
+			return grid[(int) p.getX()][(int) p.getY()].getWest();
+		}
+		return false;
 	}
-	public Boolean getCellLeft(Point p) {
-		return grid[(int) p.getX()][(int) p.getY()].getLeft();
+
+	public boolean cellHasDirt(Point p) {
+		int dirt = grid[(int) p.getX()][(int) p.getY()].getDirt();
+		return dirt > 0;
 	}
-	public Boolean getCellBack(Point p) {
-		return grid[(int) p.getX()][(int) p.getY()].getBack();
+
+	public int getDirt(Point p) {
+		Cell c = grid[(int) p.getX()][(int) p.getY()];
+		return c.getDirt();
 	}
-	public Boolean getCellForward(Point p) {
-		return grid[(int) p.getX()][(int) p.getY()].getForward();
+
+	public void updateDirt(Point p, int change) {
+		Cell c = grid[(int) p.getX()][(int) p.getY()];
+		c.setDirt(c.getDirt() + change);
+		return;
 	}
-	
-	public void populateGrid(Cell[] g) {
-		int k = 0;
-		for (int z = 0; z < g.length; z++)
-		grid = new Cell[(int) numRows][(int) numCols];
-		for (int i = (int)numRows-1; i >= 0; i--) {
-			for ( int j = 0; j < numCols; j++, k++) {
-				g[k].setName(i,j);
-				grid[i][j] = g[k];
-				logger = loggerFactory.build('m');
-				logger.log(grid[i][j].toString(), "Layout");
+
+	public void randomizeDirt() {
+		for(int row = 0; row < getNumRows(); row++) {
+			for(int col = 0; col < getNumCols(); col++) {
+				Cell c = grid[row][col];
+				int rand = (int) (Math.random() * ((4 - 0) + 1)) + 0;
+				c.setDirt(c.getDirt() + rand);
 			}
 		}
 	}
+
 }

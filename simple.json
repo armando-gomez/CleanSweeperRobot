@@ -1,11 +1,179 @@
 {
-	"numRows" : 2,
-	"numCols" : 2,
-	"cells" : [
-			{ "left" : false, "forward" : true, "right" : true, "back" : false, "dirt" : 0, "type" : "bare" },
-			{ "left" : true, "forward" : true, "right" : false, "back" : false, "dirt" : 0, "type" : "bare"},
-			{ "left" : false, "forward" : false, "right" : true, "back" : true, "dirt" : 0, "type" : "bare"},
-			{ "left" : true, "forward" : false, "right" : false, "back" : true, "dirt" : 0, "type" : "bare"}
-		]
-	
+	"numRows": 4,
+	"numCols": 4,
+	"cells": [
+		{
+			"north": false,
+			"south": true,
+			"east": true,
+			"west": false,
+			"dirt": 0,
+			"type": "bare",
+			"x": 0,
+			"y": 0
+		},
+		{
+			"north": false,
+			"south": true,
+			"east": true,
+			"west": true,
+			"dirt": 0,
+			"type": "bare",
+			"x": 1,
+			"y": 0
+		},
+		{
+			"north": false,
+			"south": true,
+			"east": true,
+			"west": true,
+			"dirt": 0,
+			"type": "bare",
+			"x": 2,
+			"y": 0
+		},
+		{
+			"north": false,
+			"south": true,
+			"east": false,
+			"west": true,
+			"dirt": 0,
+			"type": "bare",
+			"x": 3,
+			"y": 0
+		},
+		{
+			"north": true,
+			"south": true,
+			"east": true,
+			"west": false,
+			"dirt": 0,
+			"type": "bare",
+			"x": 0,
+			"y": 1
+		},
+		{
+			"north": true,
+			"south": true,
+			"east": true,
+			"west": true,
+			"dirt": 0,
+			"type": "bare",
+			"x": 1,
+			"y": 1
+		},
+		{
+			"north": true,
+			"south": true,
+			"east": true,
+			"west": true,
+			"dirt": 0,
+			"type": "bare",
+			"x": 2,
+			"y": 1
+		},
+		{
+			"north": true,
+			"south": true,
+			"east": false,
+			"west": true,
+			"dirt": 0,
+			"type": "bare",
+			"x": 3,
+			"y": 1
+		},
+		{
+			"north": true,
+			"south": true,
+			"east": true,
+			"west": false,
+			"dirt": 0,
+			"type": "bare",
+			"x": 0,
+			"y": 2
+		},
+		{
+			"north": true,
+			"south": true,
+			"east": true,
+			"west": true,
+			"dirt": 0,
+			"type": "bare",
+			"x": 1,
+			"y": 2
+		},
+		{
+			"north": true,
+			"south": true,
+			"east": true,
+			"west": true,
+			"dirt": 0,
+			"type": "bare",
+			"x": 2,
+			"y": 2
+		},
+		{
+			"north": true,
+			"south": true,
+			"east": false,
+			"west": true,
+			"dirt": 0,
+			"type": "bare",
+			"x": 3,
+			"y": 2
+		},
+		{
+			"north": true,
+			"south": false,
+			"east": true,
+			"west": false,
+			"dirt": 0,
+			"type": "bare",
+			"x": 0,
+			"y": 3
+		},
+		{
+			"north": true,
+			"south": false,
+			"east": true,
+			"west": true,
+			"dirt": 0,
+			"type": "bare",
+			"x": 1,
+			"y": 3
+		},
+		{
+			"north": true,
+			"south": false,
+			"east": true,
+			"west": true,
+			"dirt": 0,
+			"type": "bare",
+			"x": 2,
+			"y": 3
+		},
+		{
+			"north": true,
+			"south": false,
+			"east": false,
+			"west": true,
+			"dirt": 0,
+			"type": "bare",
+			"x": 3,
+			"y": 3
+		}
+	],
+	"doors": [],
+	"chargingStations": [
+		{
+			"x": 0,
+			"y": 0
+		}
+	],
+	"robot": [
+		{
+			"x": 0,
+			"y": 0
+		}
+	]
 }

@@ -1,37 +1,54 @@
-package com.groupseven.SensorSimulator;
+package com.groupseven.sensorsimulator;
 
-import com.groupseven.floorPlan.Layout;
+import com.groupseven.floorplan.Layout;
 
 import java.awt.*;
 
-public final class SensorSimulator implements AskPermission{
+public class SensorSimulator {
+	private static SensorSimulator sim;
+	private Layout layout;
 
-    private static SensorSimulator s;
-    private static Layout l;
-    private AskPermission asker;
-    private AskPermissionFactory askFact = new AskPermissionFactory();
+	public static SensorSimulator getInstance(Layout layout) {
+		if(sim == null) {
+			sim = new SensorSimulator(layout);
+		}
+		return sim;
+	}
 
+	private SensorSimulator(Layout layout) {
+		this.layout = layout;
+	}
 
-    public static SensorSimulator getInstance(Layout l) {
-        if (s == null)
-            s = new SensorSimulator(l);
-        return s;
-    }
+	public Point getStartingPos() {
+		return layout.getRobotStartingPos();
+	}
 
-    private SensorSimulator(Layout l) {
-        this.l = l;
-        System.out.println("making Singleton SensorSimulatorr");
-    }
+	public boolean canMove(Point p, String dir) {
+		return layout.getCellNeighbor(p, dir);
+	}
 
+	public String askType(Point p) {
+		return layout.getCellType(p);
+	}
 
-    public String askType(Point p) {
-        return l.getCellType(p);
-    }
+	public boolean cellHasDirt(Point p) {
+		return layout.cellHasDirt(p);
+	}
 
-    //  interface methods --- AskPermission
-    public Boolean askDir(Point p, Layout l, String dir) {
-        asker = askFact.build(dir);
-        return asker.askDir(p, l, dir);
+	public void updateDirt(Point p) {
+		layout.updateDirt(p, -1);
+		return;
+	}
 
-    }
+	public int currDirt(Point p) {
+		return layout.getDirt(p);
+	}
+
+	public int width() {
+		return layout.getNumCols();
+	}
+
+	public int height() {
+		return layout.getNumRows();
+	}
 }
