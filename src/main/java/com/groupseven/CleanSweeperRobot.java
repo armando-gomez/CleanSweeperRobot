@@ -1,6 +1,6 @@
-package com.groupseven;
+package src.main.java.com.groupseven;
 
-import com.groupseven.floorPlan.ConfigMngr;
+//import src.com.groupseven.floorPlan.ConfigMngr;
 
 import java.util.Scanner;
 
@@ -14,6 +14,6 @@ public class CleanSweeperRobot {
 		System.out.println("Please enter file to read room from.  Choose from : \n simple.json\n initial.json");
 		Scanner in = new Scanner(System.in);
 		String name = in.next();
-		ConfigMngr configMngr = new ConfigMngr(name);
+//		ConfigMngr configMngr = new ConfigMngr(name);
 	}
 }

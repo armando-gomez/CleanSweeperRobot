@@ -1,12 +1,20 @@
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotSame;
 import static org.junit.Assert.fail;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.awt.Point;
 
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
+
+import src.main.java.com.groupseven.floorPlan.Cell;
+import src.main.java.com.groupseven.floorPlan.Layout;
+
 import org.junit.Assert.*;
 import org.junit.*;
+
 public class CellTest {
 	
 	
@@ -22,57 +30,57 @@ public class CellTest {
 	@Test 
 	public void setForwardTrueTest() {
 		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setForward(true);
-		assertEquals(testCell.getForward(),true);
+		testCell.setNorth(true);
+		assertEquals(testCell.getNorth(),true);
 	}
 	
 	@Test 
 	public void setForwardFalseTest() {
 		Cell testCell = new Cell(true, false, false, false, 0, "bare");
-		testCell.setForward(false);
-		assertEquals(testCell.getForward(),false);
+		testCell.setNorth(false);
+		assertEquals(testCell.getNorth(),false);
 	}
 	
 	@Test 
 	public void setBackTrueTest() {
 		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setBack(true);
-		assertEquals(testCell.getBack(),true);
+		testCell.setSouth(true);
+		assertEquals(testCell.getSouth(),true);
 	}
 	
 	@Test 
 	public void setBackFalseTest() {
 		Cell testCell = new Cell(false, true, false, false, 0, "bare");
-		testCell.setBack(false);
-		assertEquals(testCell.getBack(),false);
+		testCell.setSouth(false);
+		assertEquals(testCell.getSouth(),false);
 	}
 	
 	@Test 
 	public void setRightTrueTest() {
 		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setRight(true);
-		assertEquals(testCell.getRight(),true);
+		testCell.setEast(true);
+		assertEquals(testCell.getEast(),true);
 	}
 	
 	@Test 
 	public void setRightFalseTest() {
 		Cell testCell = new Cell(false, false, true, false, 0, "bare");
-		testCell.setRight(false);
-		assertEquals(testCell.getRight(),false);
+		testCell.setEast(false);
+		assertEquals(testCell.getEast(),false);
 	}
 	
 	@Test 
 	public void setLeftTrueTest() {
 		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setLeft(true);
-		assertEquals(testCell.getLeft(),true);
+		testCell.setWest(true);
+		assertEquals(testCell.getWest(),true);
 	}
 	
 	@Test 
 	public void setLeftFalseTest() {
 		Cell testCell = new Cell(false, false, false, true, 0, "bare");
-		testCell.setLeft(false);
-		assertEquals(testCell.getLeft(),false);
+		testCell.setWest(false);
+		assertEquals(testCell.getWest(),false);
 	}
 	
 	// Set <direction> to already existing direction 
@@ -80,57 +88,57 @@ public class CellTest {
 	@Test 
 	public void setForwardTrueTest2() {
 		Cell testCell = new Cell(true, false, false, false, 0, "bare");
-		testCell.setForward(true);
-		assertEquals(testCell.getForward(),true);
+		testCell.setNorth(true);
+		assertEquals(testCell.getNorth(),true);
 	}
 	
 	@Test 
 	public void setForwardFalseTest2() {
 		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setForward(false);
-		assertEquals(testCell.getForward(),false);
+		testCell.setNorth(false);
+		assertEquals(testCell.getNorth(),false);
 	}
 	
 	@Test 
 	public void setBackTrueTest2() {
 		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setBack(true);
-		assertEquals(testCell.getBack(),true);
+		testCell.setSouth(true);
+		assertEquals(testCell.getSouth(),true);
 	}
 	
 	@Test 
 	public void setBackFalseTest2() {
 		Cell testCell = new Cell(true, false, false, false, 0, "bare");
-		testCell.setBack(false);
-		assertEquals(testCell.getBack(),false);
+		testCell.setSouth(false);
+		assertEquals(testCell.getSouth(),false);
 	}
 	
 	@Test 
 	public void setRightTrueTest2() {
 		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setRight(true);
-		assertEquals(testCell.getRight(),true);
+		testCell.setEast(true);
+		assertEquals(testCell.getEast(),true);
 	}
 	
 	@Test 
 	public void setRightFalseTest2() {
 		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setRight(false);
-		assertEquals(testCell.getRight(),false);
+		testCell.setEast(false);
+		assertEquals(testCell.getEast(),false);
 	}
 	
 	@Test 
 	public void setLeftTrueTest2() {
 		Cell testCell = new Cell(false, false, false, true, 0, "bare");
-		testCell.setLeft(true);
-		assertEquals(testCell.getLeft(),true);
+		testCell.setWest(true);
+		assertEquals(testCell.getWest(),true);
 	}
 	
 	@Test 
 	public void setLeftFalseTest2() {
 		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setLeft(false);
-		assertEquals(testCell.getLeft(),false);
+		testCell.setWest(false);
+		assertEquals(testCell.getWest(),false);
 	}
 	
 	//TODO assert each one capital letter
@@ -193,12 +201,54 @@ public class CellTest {
 //		testCell.setType("invalid");
 //	}
 	
-	@Test 
-	public void setNameTest() {
-		Cell testCell = new Cell(false, false, false, false, 0, "bare");
-		testCell.setName(5,2);
-		assertEquals(testCell.getName(),"(5,2)");
+	@Test
+	public void checkCellForDirtTrue() {
+		Layout layout = new Layout();
+		Cell cell = new Cell(
+				true,true,true,true,3,null);
+		assertEquals(cell.getDirt(),3);
 	}
+	
+	@Test
+	public void checkCellForDirtFalse() {
+		Layout layout = new Layout();
+		Cell cell = new Cell(
+				true,true,true,true,0,null);
+		assertEquals(cell.getDirt(),0);
+
+	}
+	
+	@Test 
+	public void checkChargeFalse() {
+		Cell cell = new Cell(
+				true,true,true,true,0,null);
+		assertEquals(cell.checkHasChargingStation(),false);
+	}
+	
+	@Test 
+	public void checkChargeTrue() {
+		Cell cell = new Cell(
+				true,true,true,true,0,null);
+		cell.setHasChargingStation(true);
+		assertEquals(cell.checkHasChargingStation(),true);
+	}
+	
+	@Test 
+	public void checkRobotFalse() {
+		Cell cell = new Cell(
+				true,true,true,true,0,null);
+		assertEquals(cell.checkHasRobot(),false);
+	}
+	
+	@Test 
+	public void checkRobotTrue() {
+		Cell cell = new Cell(
+				true,true,true,true,0,null);
+		cell.setHasRobot(true);
+
+		assertEquals(cell.checkHasRobot(),true);
+	}
+
 	
 	
 }
