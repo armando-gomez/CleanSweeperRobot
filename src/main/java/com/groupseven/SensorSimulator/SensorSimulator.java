@@ -46,7 +46,7 @@ public final class SensorSimulator implements AskPermission{
     }
 
     public void updateDirt(Point p) {
-        layout.setCellDirt(p, -1);
+        layout.setCellDirt(p, layout.getCellDirt(p)-1);
         return;
     }
 

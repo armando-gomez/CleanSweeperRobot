@@ -120,14 +120,20 @@ public class Robot implements PowerMgmt{
         Point nextMove = getPathToObj(pos, p).get(0);
         addNextMoveToPathHistory(nextMove);
 
-        if(this.pos.equals())
+        if(this.pos.equals(nextMove)) {
+            this.cleaning = false;
+            return;
+        }
+        Point oldPos = this.pos;
+        this.cleaned.add(nextMove);
+        this.setPos(nextMove);
 
-        Double prevCharge = robot.getCharge();
-        powerManager = powerMgmtFactory.build('m');
-        powerManager.changePower(pos);
+//        Double prevCharge = robot.getCharge();
+//        powerManager = powerMgmtFactory.build('m');
+//        powerManager.changePower(pos);
 
-        logger = loggerFactory.build('p');
-        logger.log(prevCharge + " to " + robot.getCharge(), "Robot");
+//        logger = loggerFactory.build('p');
+//        logger.log(prevCharge + " to " + robot.getCharge(), "Robot");
     }
 
     private List<Point> getPathToObj(Point from, Point to) {
