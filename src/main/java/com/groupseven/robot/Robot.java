@@ -120,6 +120,8 @@ public class Robot implements PowerMgmt{
         Point nextMove = getPathToObj(pos, p).get(0);
         addNextMoveToPathHistory(nextMove);
 
+        if(this.pos.equals())
+
         Double prevCharge = robot.getCharge();
         powerManager = powerMgmtFactory.build('m');
         powerManager.changePower(pos);
@@ -236,10 +238,10 @@ public class Robot implements PowerMgmt{
         Point closestPoint = chargingStations.get(0);
         int closestDistance = distance(p, closestPoint);
         for (int i = 1; i < chargingStations.size(); i++) {
-            Point p = chargingStations.get(i);
-            if (closestDistance > distance(p, p)) {
-                closestDistance = distance(p, p);
-                closestPoint = p;
+            Point temp = chargingStations.get(i);
+            if (closestDistance > distance(p, temp)) {
+                closestDistance = distance(p, temp);
+                closestPoint = temp;
             }
         }
         return closestPoint;
