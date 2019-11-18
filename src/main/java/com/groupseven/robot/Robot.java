@@ -1,7 +1,5 @@
 package com.groupseven.robot;
 
-
-
 import com.groupseven.SensorSimulator.SensorSimulator;
 import com.groupseven.floorPlan.Layout;
 
@@ -10,9 +8,7 @@ import java.util.*;
 
 import static com.groupseven.CleanSweeperRobot.*;
 
-
 public class Robot implements PowerMgmt{
-
     // interface variables
     private PowerMgmt powerManager;
     private PowerMgmtFactory powerMgmtFactory = new PowerMgmtFactory();
@@ -27,11 +23,12 @@ public class Robot implements PowerMgmt{
     private Point pos;
     private Point nxtPos;
 
-    private java.util.List<Point> chargingStations;
+    private List<Point> chargingStations;
     private List<Point> cleaned;
     private boolean cleaning;
     private List<Point> pathHistory;
     private boolean stuck;
+    private boolean emptyMe;
 
     public Robot(Double chargeMin, int dirtCapacityMax, Point startingPoint, ArrayList<Point> alp) {
         this.setCharge(250.00);
@@ -42,6 +39,7 @@ public class Robot implements PowerMgmt{
         this.sim = SensorSimulator.getInstance(Layout.getInstance());
         this.cleaned = new ArrayList<Point>();
         this.pathHistory = new ArrayList<Point>();
+        this.emptyMe = false;
     }
 
     public double getCharge() {
@@ -58,10 +56,6 @@ public class Robot implements PowerMgmt{
 
     public void setDirtCapacity(int _dirtCapacity) {
         this.dirtCapacity = _dirtCapacity;
-    }
-
-    public boolean isDirtCapacityFull() {
-        return this.getDirtCapacity() == dirtCapacityMax;
     }
 
     public void emptyDirt() {
@@ -89,6 +83,7 @@ public class Robot implements PowerMgmt{
         int counter = 0;
         do {
             System.out.println(this.getCellString(this.pos));
+            senseSurroundings();
             move();
 
             if (this.stuck) {
@@ -96,10 +91,20 @@ public class Robot implements PowerMgmt{
             }
             counter++;
         } while(this.cleaning && counter < 40 );
+
         System.out.println();
         System.out.println("Returning to charge");
         if(!this.pos.equals(getClosestChargingStation(this.pos))) {
             moveToCharge();
+        }
+    }
+
+    private void senseSurroundings() {
+        List<Point> newStations = sim.sense(this.pos);
+        for(Point p: newStations) {
+            if(!this.chargingStations.contains(p)) {
+                this.chargingStations.add(p);
+            }
         }
     }
 
@@ -124,6 +129,22 @@ public class Robot implements PowerMgmt{
         this.cleaned = new ArrayList<>();
         this.pathHistory = new ArrayList<>();
         this.rechargePower();
+
+        if(isDirtFull()) {
+            this.emptyMe = true;
+            Scanner in = new Scanner(System.in);
+            do {
+                System.out.print("Robot is full, please type empty: ");
+                String response = in.next();
+                if(response.equals("empty")) {
+                    this.emptyMe = false;
+                    start();
+                    break;
+                } else {
+                    System.out.println();
+                }
+            } while(this.emptyMe);
+        }
     }
 
     public void move(){
@@ -205,10 +226,10 @@ public class Robot implements PowerMgmt{
         if (p.y > 0 && sim.askDir(p, "f")) {
             neighbors.add(new Point(p.x, p.y - 1));
         }
-        if (p.y < sim.height() && sim.askDir(p, "b")) {
+        if (p.y < sim.width() && sim.askDir(p, "b")) {
             neighbors.add(new Point(p.x, p.y + 1));
         }
-        if (p.x < sim.width() && sim.askDir(p, "r")) {
+        if (p.x < sim.height() && sim.askDir(p, "r")) {
             neighbors.add(new Point(p.x + 1, p.y));
         }
         if (p.x > 0 && sim.askDir(p, "l")) {
@@ -223,7 +244,7 @@ public class Robot implements PowerMgmt{
 
     private Point getNextObj(Point p) {
         if (isDirtFull()) {
-            return this.getClosestChargingStation(p);
+            return null;
         }
         if (sim.askDir(p, "f") && !cleaned.contains(new Point(p.x+1, p.y))) {
             return new Point(p.x+1, p.y);
@@ -277,17 +298,6 @@ public class Robot implements PowerMgmt{
 
     private int distance(Point p, Point q) {
         return (int) Math.sqrt((q.y - p.y) * (q.y - p.y) + (q.x - p.x) * (q.x - p.x));
-    }
-
-    public boolean canMove(String dir) {
-        return sim.askDir(nxtPos, dir);
-    }
-
-    //clean method to be written later
-    public void clean() {
-        //do cleaning stuff
-        // decrement power level
-       changePower(pos);
     }
 
     //power methods
