@@ -57,8 +57,4 @@ public final class SensorSimulator implements AskPermission{
     public int height() {
         return (int) layout.getNumRows();
     }
-
-    public void getGrid() {
-        layout.getGrid();
-    }
 }
