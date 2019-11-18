@@ -163,7 +163,8 @@ public final class Layout {
 		int k = 0;
 		for (int z = 0; z < g.length; z++)
 		grid = new Cell[(int) numRows][(int) numCols];
-		for (int i = (int)numRows-1; i >= 0; i--) {
+		for (int i = 0; i < (int)numRows; i++) {
+
 			for ( int j = 0; j < numCols; j++, k++) {
 				g[k].setName(i,j);
 				grid[i][j] = g[k];
