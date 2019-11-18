@@ -6,7 +6,7 @@ import java.awt.Point;
 
 public class Cell {
 
-	private String name;	
+	private String name;
 
 	// variables to simulate if a cell is blocke in any direction
 	private Boolean forward;
@@ -19,8 +19,7 @@ public class Cell {
 	private String type;
 
 	// constructor
-	public Cell( Boolean forward, Boolean back, Boolean right, Boolean left,
-			int dirt, String type) {
+	public Cell(Boolean forward, Boolean back, Boolean right, Boolean left, int dirt, String type) {
 		setForward(forward);
 		setBack(back);
 		setRight(right);
@@ -32,7 +31,7 @@ public class Cell {
 	// getters and setters, with checks
 	public void setName(int i, int j) {
 		name = "(" + Integer.toString(i);
-		name += "," + Integer.toString(j)+ ")";
+		name += "," + Integer.toString(j) + ")";
 	}
 
 	public String getName() {
@@ -40,11 +39,11 @@ public class Cell {
 	}
 
 	//quick get of matrix coordinates
-	public Point getCoords(String name) { 
+	public Point getCoords(String name) {
 		char[] c = name.toCharArray();
-		Point p = new Point(Character.getNumericValue(c[1]),Character.getNumericValue(c[3]));
+		Point p = new Point(Character.getNumericValue(c[1]), Character.getNumericValue(c[3]));
 		return p;
-	} 
+	}
 
 	public void setForward(Boolean f) {
 		this.forward = f;
@@ -61,12 +60,12 @@ public class Cell {
 	public Boolean getBack() {
 		return this.back;
 	}
+
 	public void setRight(Boolean r) {
 		this.right = r;
 	}
 
 	public Boolean getRight() {
-
 		return this.right;
 	}
 
@@ -81,7 +80,7 @@ public class Cell {
 	// method to be able change the amount of dirt in cell to change in simulation or on creation
 	public void setDirt(int d) {
 		try {
-			if(d >= 0) 
+			if (d >= 0)
 				dirt = d;
 			else {
 				throw new InvalidEntryException("Incorrect entry");
@@ -98,7 +97,7 @@ public class Cell {
 
 	public void setType(String t) {
 		try {
-			if(t.equals("bare") || t.equals("low") || t.equals("high")) 
+			if (t.equals("bare") || t.equals("low") || t.equals("high"))
 				type = t;
 			else {
 				throw new InvalidEntryException("Incorrect entry");
@@ -120,11 +119,11 @@ public class Cell {
 		Point p = getCoords(name);
 		b += Double.toString(p.getX()) + "][";
 		b += Double.toString(p.getY()) + "]";
-		String result = "Cell : " + this.name + " , forward : " + Boolean.toString(this.forward) + 
-			" , back : " + Boolean.toString(this.back) + " , left : " + Boolean.toString(this.left) + 
-			" , right : "+ Boolean.toString(this.right) + " , dirt : " + Long.toString(this.dirt) +
-			" , type : " + this.type + ", with coordinates of " + b;
-		return result; 
+		String result = "Cell : " + this.name + " , forward : " + Boolean.toString(this.forward) +
+				" , back : " + Boolean.toString(this.back) + " , left : " + Boolean.toString(this.left) +
+				" , right : " + Boolean.toString(this.right) + " , dirt : " + Long.toString(this.dirt) +
+				" , type : " + this.type + ", with coordinnates of " + b;
+		return result;
 	}
 
 }

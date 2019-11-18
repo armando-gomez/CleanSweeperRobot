@@ -20,10 +20,6 @@ public class CleanSweeperRobot {
 	public static PrintWriter pr = null;
 	public static Robot robot;
 
-
-
-
-
 	public static void main(String[] args) {
 		try {
 			fr = new FileWriter(out, true);
@@ -58,7 +54,6 @@ public class CleanSweeperRobot {
 			num = in.nextInt();
 			if (num == 1) {
 				// add change doors
-
 				configMngr.changeDoorArray();
 				System.out.println("Returning from changing Doors.");
 			}
@@ -78,7 +73,7 @@ public class CleanSweeperRobot {
 					System.out.println();
 					System.out.print("Would you like to start cleaning? y/n: ");
 				}
-			} while(!(response.equals("y") || response.equals("Y")));
+			} while(!(response.equals("n") || response.equals("N")));
 
 			//	Shut down the program.
 			logger = loggerFactory.build('s');
@@ -90,7 +85,6 @@ public class CleanSweeperRobot {
 			fr.close();
 			//end scanner
 			in.close();
-
 
 		} catch (IOException e) {
 			e.printStackTrace();

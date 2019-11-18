@@ -184,8 +184,4 @@ public final class Layout {
 			}
 		}
 	}
-
-	public void getGrid() {
-		System.out.println(grid.toString());
-	}
 }
