@@ -165,3 +165,101 @@ Main is shutting down program on 2019-11-17 at 20:02:14
 End
 
 
+Main initialized Clean Sweeper Robot program on 2019-11-17 at 21:32:12
+ConfigMngr initialized Configuration Manager on 2019-11-17 at 21:32:15
+Layout initialized making singleton Layout on 2019-11-17 at 21:32:15
+Layout is reading simple.json on 2019-11-17 at 21:32:15
+Layout initialized number of rows on 2019-11-17 at 21:32:15
+Layout initialized number of rows on 2019-11-17 at 21:32:15
+Layout initialized Cell : (0,0) , forward : true , back : false , left : false , right : true , dirt : 0 , type : bare, with coordinnates of grid[0.0][0.0] on 2019-11-17 at 21:32:15
+Layout initialized Cell : (0,1) , forward : true , back : false , left : true , right : false , dirt : 0 , type : bare, with coordinnates of grid[0.0][1.0] on 2019-11-17 at 21:32:15
+Layout initialized Cell : (1,0) , forward : false , back : true , left : false , right : true , dirt : 0 , type : bare, with coordinnates of grid[1.0][0.0] on 2019-11-17 at 21:32:15
+Layout initialized Cell : (1,1) , forward : false , back : true , left : true , right : false , dirt : 0 , type : bare, with coordinnates of grid[1.0][1.0] on 2019-11-17 at 21:32:15
+Layout initialized doors on Cells  on 2019-11-17 at 21:32:15
+Layout initialized charging stations on Cells (0,0), on 2019-11-17 at 21:32:15
+SensorSimulator initialized making Singleton Sensor Simulator on 2019-11-17 at 21:32:15
+ConfigMngr initialized Clean Sweeper Robot on 2019-11-17 at 21:32:15
+Robot is changing power from 250.0 to 249.0 on 2019-11-17 at 21:32:27
+Robot is changing power from 249.0 to 248.0 on 2019-11-17 at 21:32:56
+Robot is changing power from 248.0 to 247.0 on 2019-11-17 at 21:33:01
+Robot is changing power from 247.0 to 246.0 on 2019-11-17 at 21:33:01
+Main is shutting down program on 2019-11-17 at 21:33:01
+
+End
+
+
+Main initialized Clean Sweeper Robot program on 2019-11-17 at 21:34:48
+ConfigMngr initialized Configuration Manager on 2019-11-17 at 21:34:51
+Layout initialized making singleton Layout on 2019-11-17 at 21:34:51
+Layout is reading simple.json on 2019-11-17 at 21:34:51
+Layout initialized number of rows on 2019-11-17 at 21:34:51
+Layout initialized number of rows on 2019-11-17 at 21:34:51
+Layout initialized Cell : (0,0) , forward : true , back : false , left : false , right : true , dirt : 0 , type : bare, with coordinnates of grid[0.0][0.0] on 2019-11-17 at 21:34:51
+Layout initialized Cell : (0,1) , forward : true , back : false , left : true , right : false , dirt : 0 , type : bare, with coordinnates of grid[0.0][1.0] on 2019-11-17 at 21:34:51
+Layout initialized Cell : (1,0) , forward : false , back : true , left : false , right : true , dirt : 0 , type : bare, with coordinnates of grid[1.0][0.0] on 2019-11-17 at 21:34:51
+Layout initialized Cell : (1,1) , forward : false , back : true , left : true , right : false , dirt : 0 , type : bare, with coordinnates of grid[1.0][1.0] on 2019-11-17 at 21:34:51
+Layout initialized doors on Cells  on 2019-11-17 at 21:34:51
+Layout initialized charging stations on Cells (0,0), on 2019-11-17 at 21:34:51
+SensorSimulator initialized making Singleton Sensor Simulator on 2019-11-17 at 21:34:51
+ConfigMngr initialized Clean Sweeper Robot on 2019-11-17 at 21:34:51
+Robot is changing power from 250.0 to 249.0 on 2019-11-17 at 21:36:36
+Robot is changing power from 249.0 to 248.0 on 2019-11-17 at 21:37:05
+Robot is changing power from 248.0 to 247.0 on 2019-11-17 at 21:37:12
+Main is shutting down program on 2019-11-17 at 21:37:12
+
+End
+
+
+Main initialized Clean Sweeper Robot program on 2019-11-17 at 21:39:56
+ConfigMngr initialized Configuration Manager on 2019-11-17 at 21:40:00
+Layout initialized making singleton Layout on 2019-11-17 at 21:40:00
+Layout is reading simple.json on 2019-11-17 at 21:40:00
+Layout initialized number of rows on 2019-11-17 at 21:40:00
+Layout initialized number of rows on 2019-11-17 at 21:40:00
+Layout initialized Cell : (0,0) , forward : true , back : false , left : false , right : true , dirt : 0 , type : bare, with coordinnates of grid[0.0][0.0] on 2019-11-17 at 21:40:00
+Layout initialized Cell : (0,1) , forward : true , back : false , left : true , right : false , dirt : 0 , type : bare, with coordinnates of grid[0.0][1.0] on 2019-11-17 at 21:40:00
+Layout initialized Cell : (1,0) , forward : false , back : true , left : false , right : true , dirt : 0 , type : bare, with coordinnates of grid[1.0][0.0] on 2019-11-17 at 21:40:00
+Layout initialized Cell : (1,1) , forward : false , back : true , left : true , right : false , dirt : 0 , type : bare, with coordinnates of grid[1.0][1.0] on 2019-11-17 at 21:40:00
+Layout initialized doors on Cells  on 2019-11-17 at 21:40:00
+Layout initialized charging stations on Cells (0,0), on 2019-11-17 at 21:40:00
+SensorSimulator initialized making Singleton Sensor Simulator on 2019-11-17 at 21:40:00
+ConfigMngr initialized Clean Sweeper Robot on 2019-11-17 at 21:40:00
+Robot is changing power from 250.0 to 249.0 on 2019-11-17 at 21:40:07
+Robot is changing power from 249.0 to 248.0 on 2019-11-17 at 21:40:07
+Robot is changing power from 248.0 to 247.0 on 2019-11-17 at 21:40:07
+Main is shutting down program on 2019-11-17 at 21:40:07
+
+End
+
+
+Main initialized Clean Sweeper Robot program on 2019-11-17 at 21:40:43
+ConfigMngr initialized Configuration Manager on 2019-11-17 at 21:40:53
+Layout initialized making singleton Layout on 2019-11-17 at 21:40:53
+Layout is reading simple.json on 2019-11-17 at 21:40:54
+Layout initialized number of rows on 2019-11-17 at 21:40:54
+Layout initialized number of rows on 2019-11-17 at 21:40:54
+Layout initialized Cell : (0,0) , forward : true , back : false , left : false , right : true , dirt : 0 , type : bare, with coordinnates of grid[0.0][0.0] on 2019-11-17 at 21:40:54
+Layout initialized Cell : (0,1) , forward : true , back : false , left : true , right : false , dirt : 0 , type : bare, with coordinnates of grid[0.0][1.0] on 2019-11-17 at 21:40:54
+Layout initialized Cell : (1,0) , forward : false , back : true , left : false , right : true , dirt : 0 , type : bare, with coordinnates of grid[1.0][0.0] on 2019-11-17 at 21:40:54
+Layout initialized Cell : (1,1) , forward : false , back : true , left : true , right : false , dirt : 0 , type : bare, with coordinnates of grid[1.0][1.0] on 2019-11-17 at 21:40:54
+Layout initialized doors on Cells  on 2019-11-17 at 21:40:54
+Layout initialized charging stations on Cells (0,0), on 2019-11-17 at 21:40:54
+SensorSimulator initialized making Singleton Sensor Simulator on 2019-11-17 at 21:40:54
+ConfigMngr initialized Clean Sweeper Robot on 2019-11-17 at 21:40:54
+Layout updated 1 unit(s) of dirt to (0,1) on 2019-11-17 at 21:40:57
+Layout updated 2 unit(s) of dirt to (0,0) on 2019-11-17 at 21:40:57
+Layout updated 3 unit(s) of dirt to (1,0) on 2019-11-17 at 21:40:57
+Layout updated 1 unit(s) of dirt to (0,0) on 2019-11-17 at 21:41:03
+Layout updated 0 unit(s) of dirt to (0,0) on 2019-11-17 at 21:41:03
+Robot is changing power from 250.0 to 249.0 on 2019-11-17 at 21:41:03
+Layout updated 2 unit(s) of dirt to (1,0) on 2019-11-17 at 21:41:03
+Layout updated 1 unit(s) of dirt to (1,0) on 2019-11-17 at 21:41:03
+Layout updated 0 unit(s) of dirt to (1,0) on 2019-11-17 at 21:41:03
+Robot is changing power from 249.0 to 248.0 on 2019-11-17 at 21:41:03
+Robot is changing power from 248.0 to 247.0 on 2019-11-17 at 21:41:03
+Layout updated 0 unit(s) of dirt to (0,1) on 2019-11-17 at 21:41:03
+Main is shutting down program on 2019-11-17 at 21:41:03
+
+End
+
+

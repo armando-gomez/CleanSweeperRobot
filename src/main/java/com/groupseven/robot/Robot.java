@@ -85,7 +85,6 @@ public class Robot implements PowerMgmt{
     }
 
     public void start() {
-        this.sim.getGrid();
         this.cleaning = true;
         int counter = 0;
         do {
@@ -114,14 +113,14 @@ public class Robot implements PowerMgmt{
             return;
         }
 
-        /*Point p  = */ setNxtPos(getNextObj(this.pos));
+        setNxtPos(getNextObj(this.pos));
 
-        if(getNxtPos()/*p*/ == null) {
+        if(getNxtPos() == null) {
             this.stuck = true;
             return;
         }
 
-        Point nextMove = getPathToObj(pos, /*p*/ getNxtPos()).get(0);
+        Point nextMove = getPathToObj(pos, getNxtPos()).get(0);
         addNextMoveToPathHistory(nextMove);
 
         if(this.pos.equals(nextMove)) {
@@ -129,7 +128,7 @@ public class Robot implements PowerMgmt{
             return;
         }
         Point oldPos = this.pos;
-        this.cleaned.add(nextMove);
+        this.cleaned.add(oldPos);
         this.setPos(nextMove);
 
         Double prevCharge = robot.getCharge();
@@ -200,22 +199,17 @@ public class Robot implements PowerMgmt{
     }
 
     private Point getNextObj(Point p) {
-        System.out.println(p.toString());
         if (isDirtFull()) {
             return this.getClosestChargingStation(p);
         }
-        if (sim.askDir(p, "f") && !cleaned.contains(new Point(p.x, p.y - 1))) {
-            System.out.println("f");
-            return new Point(p.x, p.y - 1);
-        } else if (sim.askDir(p, "b") && !cleaned.contains(new Point(p.x+1, p.y))) {
-            System.out.println("b");
+        if (sim.askDir(p, "f") && !cleaned.contains(new Point(p.x+1, p.y))) {
             return new Point(p.x+1, p.y);
-        } else if (sim.askDir(p, "r") && !cleaned.contains(new Point(p.x + 1, p.y))) {
-            System.out.println("r");
-            return new Point(p.x + 1, p.y);
-        } else if (sim.askDir(p, "l") && !cleaned.contains(new Point(p.x - 1, p.y))) {
-            System.out.println("l");
-            return new Point(p.x - 1, p.y);
+        } else if (sim.askDir(p, "b") && !cleaned.contains(new Point(p.x-1, p.y))) {
+            return new Point(p.x-1, p.y);
+        } else if (sim.askDir(p, "r") && !cleaned.contains(new Point(p.x, p.y+1))) {
+            return new Point(p.x, p.y+1);
+        } else if (sim.askDir(p, "l") && !cleaned.contains(new Point(p.x, p.y-1))) {
+            return new Point(p.x, p.y-1);
         }
         return null;
     }
