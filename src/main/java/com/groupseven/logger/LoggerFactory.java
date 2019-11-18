@@ -18,6 +18,8 @@ public class LoggerFactory {
                 return new LoggerDoorChangeImpl();
             case 'p' :
                 return new LoggerPowerChangeImpl();
+            case 'v':
+                return new LoggerMoveImpl();
             default :
                 return new LoggerNotImpl();
         }

@@ -24,6 +24,7 @@ public class Robot implements PowerMgmt{
     private Point nxtPos;
 
     private List<Point> chargingStations;
+    private List<Point> discoveredStations;
     private List<Point> cleaned;
     private boolean cleaning;
     private List<Point> pathHistory;
@@ -36,6 +37,8 @@ public class Robot implements PowerMgmt{
         this.dirtCapacityMax = dirtCapacityMax;
         this.setPos(startingPoint);
         this.chargingStations = alp;
+        this.discoveredStations = new ArrayList<>();
+        this.discoveredStations.add(chargingStations.get(0));
         this.sim = SensorSimulator.getInstance(Layout.getInstance());
         this.cleaned = new ArrayList<Point>();
         this.pathHistory = new ArrayList<Point>();
@@ -82,7 +85,6 @@ public class Robot implements PowerMgmt{
         this.cleaning = true;
         int counter = 0;
         do {
-            System.out.println(this.getCellString(this.pos));
             senseSurroundings();
             move();
 
@@ -100,10 +102,12 @@ public class Robot implements PowerMgmt{
     }
 
     private void senseSurroundings() {
-        List<Point> newStations = sim.sense(this.pos);
-        for(Point p: newStations) {
-            if(!this.chargingStations.contains(p)) {
-                this.chargingStations.add(p);
+        int[][] dirs = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}, {0, 2}, {2, 0}, {0, 2}, {2, 0}};
+
+        for(int[] dir: dirs) {
+            Point temp = new Point(pos.x + dir[0], pos.y + dir[1]);
+            if(!(temp.x < 0 || temp.x > sim.height() || temp.y < 0 || temp.y > sim.width()) && chargingStations.contains(temp)) {
+                discoveredStations.add(temp);
             }
         }
     }
@@ -115,10 +119,14 @@ public class Robot implements PowerMgmt{
     public void moveToCharge() {
         Point target = getClosestChargingStation(this.pos);
         for(Point next: getPathToObj(this.pos, target)) {
-            System.out.println(this.getCellString(this.pos));
+            Point oldPos = getPos();
             setNxtPos(next);
             addNextMoveToPathHistory(getNxtPos());
             this.setPos(getNxtPos());
+
+            logger = loggerFactory.build('v');
+            logger.log(" [" + oldPos.x + "," + oldPos.y +  "] to [" + pos.x + "," + pos.y + "]", "Robot");
+
             Double prevCharge = robot.getCharge();
             powerManager = powerMgmtFactory.build('m');
             powerManager.changePower(this.pos);
@@ -128,7 +136,10 @@ public class Robot implements PowerMgmt{
 
         this.cleaned = new ArrayList<>();
         this.pathHistory = new ArrayList<>();
+        Double prevCharge = robot.getCharge();
         this.rechargePower();
+        powerManager = powerMgmtFactory.build('m');
+        powerManager.changePower(this.pos);
 
         if(isDirtFull()) {
             this.emptyMe = true;
@@ -174,6 +185,8 @@ public class Robot implements PowerMgmt{
         Point oldPos = this.pos;
         this.cleaned.add(oldPos);
         this.setPos(getNxtPos());
+        logger = loggerFactory.build('v');
+        logger.log(" [" + oldPos.x + "," + oldPos.y +  "] to [" + pos.x + "," + pos.y + "]", "Robot");
 
         Double prevCharge = robot.getCharge();
         powerManager = powerMgmtFactory.build('m');
@@ -280,14 +293,14 @@ public class Robot implements PowerMgmt{
     }
 
     public Point getClosestChargingStation(Point p) {
-        if (chargingStations.size() == 1) {
-            return chargingStations.get(0);
+        if (discoveredStations.size() == 1) {
+            return discoveredStations.get(0);
         }
 
-        Point closestPoint = chargingStations.get(0);
+        Point closestPoint = discoveredStations.get(0);
         int closestDistance = distance(p, closestPoint);
-        for (int i = 1; i < chargingStations.size(); i++) {
-            Point p2 = chargingStations.get(i);
+        for (int i = 1; i < discoveredStations.size(); i++) {
+            Point p2 = discoveredStations.get(i);
             if (closestDistance > distance(p2, p2)) {
                 closestDistance = distance(p2, p2);
                 closestPoint = p2;

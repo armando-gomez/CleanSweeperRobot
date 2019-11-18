@@ -27,13 +27,10 @@ class PowerMgmtFactory {
 
 class PowerMgmtCleanImpl implements PowerMgmt {
     public void changePower(Point p) {
-
         char[] cs = Layout.getInstance().getCellType(p).toCharArray();
 
-        System.out.println(robot.getCharge());
         Double num =  getValue(cs[0]);
         robot.setCharge(robot.getCharge() - num);
-        System.out.println(robot.getCharge());
     }
 }
 
@@ -46,10 +43,7 @@ class PowerMgmtMoveImpl implements PowerMgmt {
         Double one = getValue(cs1[0]);
         Double two = getValue(cs2[0]);
 
-
-        System.out.println(robot.getCharge());
         robot.setCharge(robot.getCharge() - ((one + two) / 2.0 ));
-        System.out.println(robot.getCharge());
     }
 }
 

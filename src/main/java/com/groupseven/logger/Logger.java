@@ -86,3 +86,10 @@ class LoggerNotImpl implements Logger{
         System.out.println("nothing");
     }
 }
+
+class LoggerMoveImpl implements Logger{
+    public void log(String txt, String loc) {
+        pr.println(loc + " is moving from " + txt + " on " + getDate());
+        System.out.println(loc + " is moving" + txt + " on " + getDate());
+    }
+}
