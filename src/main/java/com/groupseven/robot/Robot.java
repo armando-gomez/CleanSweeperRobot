@@ -92,15 +92,38 @@ public class Robot implements PowerMgmt{
             move();
 
             if (this.stuck) {
-                System.out.println("Robot has shutdown, needs assistance!");
                 cleaning = false;
             }
             counter++;
         } while(this.cleaning && counter < 40 );
+        System.out.println();
+        System.out.println("Returning to charge");
+        if(!this.pos.equals(getClosestChargingStation(this.pos))) {
+            moveToCharge();
+        }
     }
 
     private String getCellString(Point p) {
         return sim.getCellString(p);
+    }
+
+    public void moveToCharge() {
+        Point target = getClosestChargingStation(this.pos);
+        for(Point next: getPathToObj(this.pos, target)) {
+            System.out.println(this.getCellString(this.pos));
+            setNxtPos(next);
+            addNextMoveToPathHistory(getNxtPos());
+            this.setPos(getNxtPos());
+            Double prevCharge = robot.getCharge();
+            powerManager = powerMgmtFactory.build('m');
+            powerManager.changePower(this.pos);
+            logger = loggerFactory.build('p');
+            logger.log(prevCharge + " to " + robot.getCharge(), "Robot");
+        }
+
+        this.cleaned = new ArrayList<>();
+        this.pathHistory = new ArrayList<>();
+        this.rechargePower();
     }
 
     public void move(){
@@ -120,16 +143,16 @@ public class Robot implements PowerMgmt{
             return;
         }
 
-        Point nextMove = getPathToObj(pos, getNxtPos()).get(0);
-        addNextMoveToPathHistory(nextMove);
+        setNxtPos(getPathToObj(pos, getNxtPos()).get(0));
+        addNextMoveToPathHistory(getNxtPos());
 
-        if(this.pos.equals(nextMove)) {
+        if(this.pos.equals(getNxtPos())) {
             this.cleaning = false;
             return;
         }
         Point oldPos = this.pos;
         this.cleaned.add(oldPos);
-        this.setPos(nextMove);
+        this.setPos(getNxtPos());
 
         Double prevCharge = robot.getCharge();
         powerManager = powerMgmtFactory.build('m');
@@ -225,10 +248,6 @@ public class Robot implements PowerMgmt{
 
     private boolean cellHasDirt(Point p) {
         return this.sim.currDirt(p) > 0;
-    }
-
-    private void senseSurroundings() {
-
     }
 
     public void rechargePower() {
