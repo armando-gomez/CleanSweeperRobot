@@ -123,8 +123,8 @@ public class Cell {
 		String result = "Cell : " + this.name + " , forward : " + Boolean.toString(this.forward) + 
 			" , back : " + Boolean.toString(this.back) + " , left : " + Boolean.toString(this.left) + 
 			" , right : "+ Boolean.toString(this.right) + " , dirt : " + Long.toString(this.dirt) +
-			" , type : " + this.type + ", with coordinnates of " + b;
-		return result; 
+			" , type : " + this.type + ", with coordinates of " + b;
+		return result;
 	}
 
 }

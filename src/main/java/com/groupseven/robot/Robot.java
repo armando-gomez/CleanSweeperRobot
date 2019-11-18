@@ -29,7 +29,7 @@ public class Robot implements PowerMgmt{
 
     private java.util.List<Point> chargingStations;
     private List<Point> cleaned;
-    private boolean cleaning = true;
+    private boolean cleaning;
     private List<Point> pathHistory;
     private boolean stuck;
 
@@ -86,6 +86,7 @@ public class Robot implements PowerMgmt{
 
     public void start() {
         this.cleaning = true;
+        int counter = 0;
         do {
             System.out.println(this.getCellString(this.pos));
             move();
@@ -94,7 +95,8 @@ public class Robot implements PowerMgmt{
                 System.out.println("Robot has shutdown, needs assistance!");
                 cleaning = false;
             }
-        } while(this.cleaning);
+            counter++;
+        } while(this.cleaning && counter < 40 );
     }
 
     private String getCellString(Point p) {
@@ -110,14 +112,14 @@ public class Robot implements PowerMgmt{
             cleanDirt(this.pos);
         }
 
-        Point p = getNextObj(this.pos);
+        /*Point p  = */ setNxtPos(getNextObj(this.pos));
 
-        if(p == null) {
+        if(getNxtPos()/*p*/ == null) {
             this.stuck = true;
             return;
         }
 
-        Point nextMove = getPathToObj(pos, p).get(0);
+        Point nextMove = getPathToObj(pos, /*p*/ getNxtPos()).get(0);
         addNextMoveToPathHistory(nextMove);
 
         if(this.pos.equals(nextMove)) {
@@ -128,12 +130,12 @@ public class Robot implements PowerMgmt{
         this.cleaned.add(oldPos);
         this.setPos(nextMove);
 
-//        Double prevCharge = robot.getCharge();
-//        powerManager = powerMgmtFactory.build('m');
-//        powerManager.changePower(pos);
+        Double prevCharge = robot.getCharge();
+        powerManager = powerMgmtFactory.build('m');
+        powerManager.changePower(pos);
 
-//        logger = loggerFactory.build('p');
-//        logger.log(prevCharge + " to " + robot.getCharge(), "Robot");
+        logger = loggerFactory.build('p');
+        logger.log(prevCharge + " to " + robot.getCharge(), "Robot");
     }
 
     private List<Point> getPathToObj(Point from, Point to) {
@@ -199,14 +201,18 @@ public class Robot implements PowerMgmt{
         if (isDirtFull()) {
             return this.getClosestChargingStation(p);
         }
-        if (sim.askDir(p, "f") && !cleaned.contains(new Point(p.x-1, p.y))) {
-            return new Point(p.x-1, p.y);
+        if (sim.askDir(p, "f") && !cleaned.contains(new Point(p.x, p.y - 1))) {
+            System.out.println("f");
+            return new Point(p.x + 1, p.y /*- 1*/);
         } else if (sim.askDir(p, "b") && !cleaned.contains(new Point(p.x+1, p.y))) {
-            return new Point(p.x+1, p.y);
-        } else if (sim.askDir(p, "r") && !cleaned.contains(new Point(p.x, p.y+1))) {
-            return new Point(p.x, p.y+1);
-        } else if (sim.askDir(p, "r") && !cleaned.contains(new Point(p.x, p.y-1))) {
-            return new Point(p.x, p.y-1);
+            System.out.println("b");
+            return new Point(p.x /*+*/- 1, p.y);
+        } else if (sim.askDir(p, "r") && !cleaned.contains(new Point(p.x + 1, p.y))) {
+            System.out.println("r");
+            return new Point(p.x /*+ 1*/, p.y - 1);
+        } else if (sim.askDir(p, "l") && !cleaned.contains(new Point(p.x - 1, p.y))) {
+            System.out.println("l");
+            return new Point(p.x /*- 1*/, p.y + 1);
         }
         return null;
     }
