@@ -5,13 +5,12 @@
 	"dirtCapacityMax" : 50,
 
 	"cells" : [
-			{ "left" : false, "forward" : true, "right" : true, "back" : false, "dirt" : 0, "type" : "bare" },
-			{ "left" : true, "forward" : true, "right" : false, "back" : false, "dirt" : 0, "type" : "bare"},
-			{ "left" : false, "forward" : false, "right" : true, "back" : true, "dirt" : 0, "type" : "bare"},
-			{ "left" : true, "forward" : false, "right" : false, "back" : true, "dirt" : 0, "type" : "bare"}
-		],
+		{ "forward" : true, "back" : false, "right" : true,  "left" : false, "dirt" : 0, "type" : "bare"},
+		{ "forward" : true, "back" : false, "right" : false,  "left" : true, "dirt" : 0, "type" : "bare"},
+		{ "forward" : false, "back" : true, "right" : true,  "left" : false, "dirt" : 0, "type" : "bare"},
+		{ "forward" : false, "back" : true, "right" : false,  "left" : true, "dirt" : 0, "type" : "bare"}
+	],
 	"doors" :  [
-
 	],
 
 	"chargingStation" : [
