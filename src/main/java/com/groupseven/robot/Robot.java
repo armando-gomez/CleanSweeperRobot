@@ -85,6 +85,7 @@ public class Robot implements PowerMgmt{
         * if it can move, if it can move then do this power stuff
         * */
 
+
         Double prevCharge = robot.getCharge();
         powerManager = powerMgmtFactory.build('m');
         powerManager.changePower(pos);
