@@ -20,8 +20,8 @@ class LoggerDirtyImpl implements Logger{
         Point p = new Point();
         p.x = Integer.parseInt(ss[0]);
         p.y = Integer.parseInt(ss[1]);
-        pr.println(loc + " added " + ss[2] + " unit(s) of dirt to " + Layout.getInstance().getCellName(p) + " on " + getDate());
-        System.out.println(loc + " added " + ss[2] + " units of dirt to " + Layout.getInstance().getCellName(p) + " on " + getDate());
+        pr.println(loc + " updated " + ss[2] + " unit(s) of dirt to " + Layout.getInstance().getCellName(p) + " on " + getDate());
+        System.out.println(loc + " updated " + ss[2] + " units of dirt to " + Layout.getInstance().getCellName(p) + " on " + getDate());
     }
 }
 
