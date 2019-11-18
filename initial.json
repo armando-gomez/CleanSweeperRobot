@@ -1,6 +1,8 @@
 {
 	"numRows" : 10,
 	"numCols" : 10,
+  "chargeMin" : 20,
+  "dirtCapacityMax" : 50,
 
 	"cells" : [
 		{ "forward" : true, "back" : false, "right" : true, "left" : false , "dirt" : 0, "type" : "low"},
@@ -14,8 +16,6 @@
 		{ "forward" : true , "back" : false , "right" : true , "left" : true , "dirt" : 0, "type" :  "bare"},
 		{ "forward" : true , "back" : false , "right" : false , "left" : true , "dirt" : 0, "type" :  "bare"},
 
-
-
 		{ "forward" :  true, "back" :  true, "right" :  true, "left" : false , "dirt" : 0, "type" : "low"},
 		{ "forward" :  true, "back" :  true, "right" :  true, "left" :  true, "dirt" : 0, "type" :  "low"},
 		{ "forward" :  true, "back" :  true, "right" :  true, "left" :  true, "dirt" : 0, "type" :  "low"},
@@ -26,8 +26,6 @@
 		{ "forward" :  true, "back" :  true, "right" :  true, "left" :  true , "dirt" : 0, "type" :  "high" },
 		{ "forward" :  true, "back" :  true, "right" :  true, "left" :  true , "dirt" : 0, "type" : "high"},
 		{ "forward" :  true, "back" :  true, "right" : false , "left" :  true , "dirt" : 0, "type" : "bare" },
-
-
 
 		{ "forward" : true, "back" : true , "right" : true , "left" : false , "dirt" : 0, "type" : "low"},
 		{ "forward" : true, "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
@@ -40,8 +38,6 @@
 		{ "forward" :  true, "back" : true , "right" :  true, "left" :  true, "dirt" : 0, "type" : "high"},
 		{ "forward" :  true, "back" : true , "right" : false , "left" :  true, "dirt" : 0, "type" : "bare"},
 
-
-
 		{ "forward" : true , "back" : true , "right" : true , "left" : false, "dirt" : 0, "type" : "low"},
 		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
 		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
@@ -52,7 +48,6 @@
 		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "high"},
 		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "high"},
 		{ "forward" : true , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" : "bare"},
-
 
 		{ "forward" : false , "back" : true, "right" : true , "left" : false , "dirt" : 0, "type" : "low"},
 		{ "forward" : false , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
@@ -65,7 +60,6 @@
 		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "high"},
 		{ "forward" : true , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" : "bare"},
 
-
 		{ "forward" : false , "back" : false , "right" : true , "left" : false, "dirt" : 0, "type" : "bare"},
 		{ "forward" : false , "back" : false , "right" : true , "left" : true , "dirt" : 0, "type" :  "bare"},
 		{ "forward" : false , "back" : false , "right" : true , "left" : true , "dirt" : 0, "type" :  "bare"},
@@ -76,7 +70,6 @@
 		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "high"},
 		{ "forward" : true , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "high"},
 		{ "forward" : true , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" :  "bare"},
-
 
 		{ "forward" : false , "back" : false , "right" : true , "left" : false , "dirt" : 0, "type" :  "bare"},
 		{ "forward" : false , "back" : false , "right" : false , "left" : true , "dirt" : 0, "type" :  "bare"},
@@ -89,8 +82,6 @@
 		{ "forward" : false , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" :  "bare"},
 		{ "forward" : false , "back" : true , "right" : false , "left" : true , "dirt" : 0, "type" :  "bare"},
 
-
-
 		{ "forward" : true , "back" : false , "right" : true  , "left" : false , "dirt" : 0, "type" : "low"},
 		{ "forward" : true , "back" : false , "right" : true  , "left" : true  , "dirt" : 0, "type" : "low"},
 		{ "forward" : true  , "back" : false , "right" : true  , "left" : true  , "dirt" : 0, "type" : "low"},
@@ -101,7 +92,6 @@
 		{ "forward" : true  , "back" : true  , "right" : false , "left" : true  , "dirt" : 0, "type" :  "bare"},
 		{ "forward" : true  , "back" : false , "right" : true  , "left" : false , "dirt" : 0, "type" :  "bare"},
 		{ "forward" : true  , "back" : false , "right" : false , "left" : true  , "dirt" : 0, "type" :  "bare"},
-
 
 		{ "forward" : true , "back" : true  , "right" : true  , "left" : false , "dirt" : 0, "type" : "low"},
 		{ "forward" : true  , "back" : true  , "right" : true  , "left" : true  , "dirt" : 0, "type" : "low"},
@@ -114,7 +104,6 @@
 		{ "forward" : true  , "back" : true  , "right" : true  , "left" : false , "dirt" : 0, "type" : "bare" },
 		{ "forward" : true  , "back" : true  , "right" : false , "left" : true , "dirt" : 0, "type" : "bare" },
 
-
 		{ "forward" : false , "back" : true , "right" : true , "left" : false  , "dirt" : 0, "type" : "low"},
 		{ "forward" : false  , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
 		{ "forward" : false  , "back" : true , "right" : true , "left" : true , "dirt" : 0, "type" : "low"},
@@ -125,5 +114,22 @@
 		{ "forward" : false  , "back" : false  , "right" : false  , "left" : true , "dirt" : 0, "type" : "bare" },
 		{ "forward" : false  , "back" : true , "right" : true , "left" : false , "dirt" : 0, "type" : "bare" },
 		{ "forward" : false  , "back" : true , "right" : false  , "left" : true , "dirt" : 0, "type" : "bare" }
+	],
+
+	"doors" :  [
+		{"p1x" : 3, "p1y" : 3, "p2x" : 3, "p2y" :  4, "s" :  "right", "ns" :  "left"},
+		{"p1x" : 4, "p1y" : 2, "p2x" : 5, "p2y" :  2, "s" :  "forward", "ns" :  "back"},
+		{"p1x" : 6, "p1y" : 1, "p2x" : 7, "p2y" :  1, "s" :  "forward", "ns" :  "back"},
+		{"p1x" : 6, "p1y" : 3, "p2x" : 6, "p2y" :  4, "s" :  "right", "ns" :  "left"},
+		{"p1x" : 7, "p1y" : 3, "p2x" : 7, "p2y" :  4, "s" :  "right", "ns" :  "left"},
+		{"p1x" : 7, "p1y" : 4, "p2x" : 8, "p2y" :  4, "s" :  "forward", "ns" :  "back"},
+		{"p1x" : 7, "p1y" : 5, "p2x" : 7, "p2y" :  6, "s" :  "right", "ns" :  "left"},
+		{"p1x" : 8, "p1y" : 7, "p2x" : 9, "p2y" :  7, "s" :  "forward", "ns" :  "back"},
+		{"p1x" : 8, "p1y" : 8, "p2x" : 8, "p2y" :  7, "s" :  "left", "ns" :  "right"}
+
+	],
+
+	"chargingStation" : [
+		{"x" : 0, "y" : 0}
 	]
 }
